@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .models import Artist
 from .serializers import ArtistSerializer
-
+from django.http import JsonResponse
 
 
 class ArtistViewSet(viewsets.ModelViewSet):
@@ -18,3 +18,13 @@ class ArtistViewSet(viewsets.ModelViewSet):
     search_fields = ['surname', 'origin']
     ordering_fields = ['nickname']
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend, SearchFilter, OrderingFilter)
+
+
+def get_artist_data(request, artist_id):
+    artist = Artist.object.get(id=artist_id)
+    data = {
+        'id': artist.id,
+        'name': artist.name,
+        'surname': artist.surname
+    }
+    return JsonResponse(data)

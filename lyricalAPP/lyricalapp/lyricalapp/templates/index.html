@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+</head>
+<body>
+    <h1>Lyrical App</h1>
+    <a href="{% url 'get_artist_data' artist_id %}">Pobierz dane artysty</a>
+
+<script>
+    fetch('{% url 'get_artist_data' artist_id %}')
+    .then(response => response.json())
+    .then(data => {
+        // Tutaj możesz przetwarzać dane JSON
+        console.log(data);
+    });
+
+</script>
+</body>
+</html>

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'artist',
     'song',
-    'request'
+    'request',
+    'lyricalapp'
 ]
 
 MIDDLEWARE = [
