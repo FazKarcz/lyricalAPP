@@ -2,20 +2,14 @@
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <title>Start</title>
+    <title>Lyrical App</title>
 </head>
 <body>
     <h1>Lyrical App</h1>
-    <a href="{% url 'get_artist_data' artist_id %}">Pobierz dane artysty</a>
-
-<script>
-    fetch('{% url 'get_artist_data' artist_id %}')
-    .then(response => response.json())
-    .then(data => {
-        // Tutaj możesz przetwarzać dane JSON
-        console.log(data);
-    });
-
-</script>
+    <a href="artist_list">Artyści</a>
+    <a href="song/song">Piosenki</a>
+    <a href="song/album">Album</a>
+    <a href="request">Dodaj piosenkę</a>
+    <a href="admin">Admin</a>
 </body>
 </html>

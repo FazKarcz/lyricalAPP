@@ -5,6 +5,9 @@ from artist.models import Artist
 class Genre(models.Model):
     name = models.CharField(max_length=255, default='Brak')
 
+    def __str__(self):
+        return self.name
+
 
 class Album(models.Model):
     album_name = models.CharField(max_length=255)
@@ -13,6 +16,9 @@ class Album(models.Model):
     release_date = models.DateField()
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)  # Po ID z tabeli artist
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, default=0)  # Domyślna wartość dla pola genre
+
+    def __str__(self):
+        return self.album_name
 
 
 class Song(models.Model):
@@ -24,3 +30,6 @@ class Song(models.Model):
     link = models.CharField(max_length=255, default=None)
     release_date = models.DateField()  # Data wydania
     update_date = models.DateField()
+
+    def __str__(self):
+        return self.song_name
