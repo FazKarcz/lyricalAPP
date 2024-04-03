@@ -1,4 +1,5 @@
 import django_filters
+from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -17,6 +18,12 @@ class SongViewSet(viewsets.ModelViewSet):
     ordering_fields = ['song_name', 'release_date','album']
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend, SearchFilter, OrderingFilter)
 
+
+def songList(request):
+    songs = Song.objects.all()
+    return render(request, 'song_list.html', {'songs': songs})
+
+
 class AlbumViewSet(viewsets.ModelViewSet):
     serializer_class = AlbumSerializer
     authentication_classes = (TokenAuthentication,)
@@ -25,3 +32,8 @@ class AlbumViewSet(viewsets.ModelViewSet):
     search_fields = ['album_name','genre']
     ordering_fields = ['release_date']
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend, SearchFilter, OrderingFilter)
+
+
+def albumList(request):
+    albums = Album.objects.all()
+    return render(request, 'album_list.html', {'albums': albums})

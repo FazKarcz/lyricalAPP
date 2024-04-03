@@ -16,6 +16,6 @@ album_router.register('', views.AlbumViewSet, basename='album')
 
 # Dodajemy ścieżki do listy urlpatterns
 urlpatterns = [
-    path('song/', include(song_router.urls)),  # Dodajemy URL-e dla SongViewSet
-    path('album/', include(album_router.urls)),  # Dodajemy URL-e dla AlbumViewSet
+    path('song/', views.songList, name='song_list'),  # Dodajemy URL-e dla SongViewSet
+    path('album/', views.albumList, name='album_list'),  # Dodajemy URL-e dla AlbumViewSet
 ]
