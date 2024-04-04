@@ -10,7 +10,7 @@ from .serializers import SongSerializer, AlbumSerializer
 
 class SongViewSet(viewsets.ModelViewSet):
     serializer_class = SongSerializer
-    authentication_classes = (TokenAuthentication,)
+    authentication_classes = (SessionAuthentication,)
     permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Song.objects.all()
     search_fields = ['artist', 'song_name', 'genre','album']
