@@ -1,7 +1,6 @@
 import django_filters
-from django.shortcuts import render
 from rest_framework import viewsets
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
@@ -26,7 +25,7 @@ def songList(request):
 
 class AlbumViewSet(viewsets.ModelViewSet):
     serializer_class = AlbumSerializer
-    authentication_classes = (TokenAuthentication,)
+    authentication_classes = (SessionAuthentication,)
     permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Album.objects.all()
     search_fields = ['album_name','genre']
