@@ -29,7 +29,7 @@ class Song(models.Model):
     lyrics = models.TextField()
     link = models.CharField(max_length=255, default=None)
     release_date = models.DateField()  # Data wydania
-    update_date = models.DateField()
+    update_date = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.song_name
