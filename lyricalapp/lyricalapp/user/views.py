@@ -54,6 +54,5 @@ def logout(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-
     return render(request,'user/dashboard.html')
 
