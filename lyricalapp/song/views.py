@@ -1,4 +1,5 @@
 import django_filters
+from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -20,7 +21,7 @@ class SongViewSet(viewsets.ModelViewSet):
 
 def songList(request):
     songs = Song.objects.all()
-    return render(request, 'song_list.html', {'songs': songs})
+    return render(request, 'song/song_list.html', {'songs': songs})
 
 
 class AlbumViewSet(viewsets.ModelViewSet):
@@ -35,4 +36,4 @@ class AlbumViewSet(viewsets.ModelViewSet):
 
 def albumList(request):
     albums = Album.objects.all()
-    return render(request, 'album_list.html', {'albums': albums})
+    return render(request, 'song/album_list.html', {'albums': albums})
