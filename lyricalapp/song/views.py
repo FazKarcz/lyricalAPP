@@ -57,3 +57,8 @@ def add_comment(request, pk):
         comment_form = CommentForm()
 
     pass
+
+
+def song_detail(request, song_id):
+    song = get_object_or_404(Song, pk=song_id)
+    return render(request, 'song/song_detail.html', {'song': song})

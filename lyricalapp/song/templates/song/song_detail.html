@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyrical App</title>
+</head>
+<body>
+    {% block content %}
+      <h1>{{ song.song_name }}</h1>
+      <p>Artysta: {{ song.artist.name }}</p>
+      <p>Gatunek: {{ song.genre.name }}</p>
+      <p>Album: {{ song.album.name }}</p>
+      <p>Link: <a href="{{ song.link }}">{{ song.link }}</a></p>
+      <p>Data wydania: {{ song.release_date }}</p>
+      <p>Data aktualizacji: {{ song.update_date }}</p>
+      <h2>Tekst piosenki:</h2>
+      <p>{{ song.lyrics }}</p>
+    {% endblock %}
+</body>
+</html>
