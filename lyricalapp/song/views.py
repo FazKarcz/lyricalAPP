@@ -4,9 +4,12 @@ from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
-from .models import Song,Album
+from .models import Song, Album, Comment
 from .serializers import SongSerializer, AlbumSerializer
+from .forms import CommentForm
 
 
 class SongViewSet(viewsets.ModelViewSet):
@@ -37,3 +40,20 @@ class AlbumViewSet(viewsets.ModelViewSet):
 def albumList(request):
     albums = Album.objects.all()
     return render(request, 'song/album_list.html', {'albums': albums})
+
+
+#TO BE CONTINUED
+@login_required
+def add_comment(request, pk):
+    song = get_object_or_404(Song, pk=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.song = song
+            comment.user = request.user
+            comment.save()
+    else:
+        comment_form = CommentForm()
+
+    pass
