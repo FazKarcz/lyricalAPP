@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyrical App</title>
+</head>
+<body>
+    {% block content %}
+      <h1>{{ song.song_name }}</h1>
+      <p>Artysta: {{ song.artist}}</p>
+      <p>Gatunek: {{ song.genre }}</p>
+      <p>Album: {{ song.album }}</p>
+      <p>Link: <a href="{{ song.link }}">{{ song.link }}</a></p>
+      <p>Data wydania: {{ song.release_date }}</p>
+      <p>Data aktualizacji: {{ song.update_date }}</p>
+      <h2>Tekst piosenki:</h2>
+      <p>{{ song.lyrics }}</p>
+    {% endblock %}
+
+
+    <h2>Komentarze</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.content }} - {{ comment.user }} - {{ comment.created_date }}</li>
+        {% endfor %}
+    </ul>
+    {% if user.is_authenticated %}
+        <h1>Dodaj Komentarz</h1>
+       <form method="post" action="{% url 'song:song_detail' song_id=song.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Dodaj komentarz</button>
+        </form>
+    {% else %}
+        <p>Zaloguj się aby dodać komentarz.</p>
+    {% endif %}
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 from django.db import models
 from artist.models import Artist
+from django.contrib.auth.models import User
 
 
 class Genre(models.Model):
@@ -33,3 +34,16 @@ class Song(models.Model):
 
     def __str__(self):
         return self.song_name
+
+class Comment(models.Model):
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_date']
+
+    def __str__(self):
+        return self.content
+

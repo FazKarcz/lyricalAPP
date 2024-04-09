@@ -8,7 +8,7 @@
   <h1>Lista Piosenek</h1>
   <ul>
     {% for song in songs %}
-      <li>{{ song.song_name }} - {{ song.artist }}</li>
+      <li><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a> - {{ song.artist }}</li>
     {% endfor %}
   </ul>
 </body>
