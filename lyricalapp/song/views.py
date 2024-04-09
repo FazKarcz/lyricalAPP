@@ -1,5 +1,5 @@
 import django_filters
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -42,23 +42,21 @@ def albumList(request):
     return render(request, 'song/album_list.html', {'albums': albums})
 
 
-#TO BE CONTINUED
-@login_required
-def add_comment(request, pk):
-    song = get_object_or_404(Song, pk=pk)
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.song = song
-            comment.user = request.user
-            comment.save()
-    else:
-        comment_form = CommentForm()
-
-    pass
-
-
 def song_detail(request, song_id):
     song = get_object_or_404(Song, pk=song_id)
-    return render(request, 'song/song_detail.html', {'song': song})
+    comments = Comment.objects.filter(song=song)
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.song = song
+                comment.user = request.user
+                comment.save()
+                form = CommentForm()
+        else:
+            return redirect('login')
+    else:
+            form = CommentForm()
+    return render(request, 'song/song_detail.html', {'song': song, 'comments': comments, 'form': form, 'song_id': song_id})
+
