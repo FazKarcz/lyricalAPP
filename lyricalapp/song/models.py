@@ -1,6 +1,7 @@
 from django.db import models
 from artist.models import Artist
 from django.contrib.auth.models import User
+from embed_video.fields import Embed VideoField
 
 
 class Genre(models.Model):
@@ -28,7 +29,7 @@ class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE, default=0)
     song_name = models.CharField(max_length=50)
     lyrics = models.TextField()
-    link = models.CharField(max_length=255, default=None)
+    link = embed
     release_date = models.DateField()  # Data wydania
     update_date = models.DateField(auto_now=True)
 

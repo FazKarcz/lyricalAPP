@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'song',
     'request',
     'user',
-    'lyricalapp'
+    'lyricalapp',
+    'embed_video'
 ]
 
 MIDDLEWARE = [
