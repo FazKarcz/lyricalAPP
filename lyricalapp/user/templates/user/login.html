@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyrical App</title>
+</head>
+<body>
+<h1>Tutaj jest logowanie</h1>
+
+<form method="POST" autocomplete="off">
+
+    {% csrf_token %}
+
+    {{loginform.as_p}}
+
+    <input type="submit" value="login"></input>
+
+</form>
+</body>
+</html>
