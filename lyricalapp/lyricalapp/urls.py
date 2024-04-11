@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+
 urlpatterns = [
     path('', views.startingPage, name='index'),
     path('artist_list/', include('artist.urls'), name='artist_list'),
@@ -26,6 +27,4 @@ urlpatterns = [
     path('song/', include('song.urls')),
     path('request/', include('request.urls')),
     path('user/', include('user.urls'), name="user")
-
-
 ]
