@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Song, Album, Comment
 from .serializers import SongSerializer, AlbumSerializer
 from .forms import CommentForm
+from user.models import Favorite
 
 
 class SongViewSet(viewsets.ModelViewSet):
@@ -45,18 +46,31 @@ def albumList(request):
 def song_detail(request, song_id):
     song = get_object_or_404(Song, pk=song_id)
     comments = Comment.objects.filter(song=song)
+    favorite = None
+
+    if request.user.is_authenticated:
+        favorite = Favorite.objects.filter(user=request.user, song=song).first()
+
     if request.method == 'POST':
         if request.user.is_authenticated:
-            form = CommentForm(request.POST)
-            if form.is_valid():
-                comment = form.save(commit=False)
-                comment.song = song
-                comment.user = request.user
-                comment.save()
-                form = CommentForm()
+            if 'comment_form' in request.POST:
+                form = CommentForm(request.POST)
+                if form.is_valid():
+                    comment = form.save(commit=False)
+                    comment.song = song
+                    comment.user = request.user
+                    comment.save()
+                    form = CommentForm()
+            elif 'favorite_form' in request.POST:
+                if favorite:
+                    favorite.delete()
+                else:
+                    Favorite.objects.create(user=request.user, song=song)
         else:
             return redirect('login')
-    else:
-            form = CommentForm()
-    return render(request, 'song/song_detail.html', {'song': song, 'comments': comments, 'form': form, 'song_id': song_id})
+
+    form = CommentForm()
+    return render(request, 'song/song_detail.html', {'song': song, 'comments': comments,
+                                                     'form': form, 'song_id': song_id, 'favorite': favorite})
+
 

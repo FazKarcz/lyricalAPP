@@ -7,6 +7,11 @@
 <body>
     {% block content %}
     {% load embed_video_tags %}
+    <form method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="favorite_form">
+        <input type="submit" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
+    </form>
       <h1>{{ song.song_name }}</h1>
       <p>Artysta: {{ song.artist}}</p>
       <p>Gatunek: {{ song.genre }}</p>
