@@ -79,4 +79,7 @@ def make_request(request):
         form = RequestForm()
     return render(request, 'user/make_request.html', {'form': form})
 
-@login_required
+@login_required(login_url='login')
+def favorite_list(request):
+    favorites = Favorite.objects.filter(user=request.user)
+    return render(request, 'user/favorite_list.html', {'favorites': favorites})
