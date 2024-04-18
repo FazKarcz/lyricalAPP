@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from request.models import Request
 from request.forms import RequestForm
+from .models import Favorite
+from song.models import Song
 # Create your views here.
 
 def register(request):
@@ -76,3 +78,8 @@ def make_request(request):
     else:
         form = RequestForm()
     return render(request, 'user/make_request.html', {'form': form})
+
+@login_required(login_url='login')
+def favorite_list(request):
+    favorites = Favorite.objects.filter(user=request.user)
+    return render(request, 'user/favorite_list.html', {'favorites': favorites})

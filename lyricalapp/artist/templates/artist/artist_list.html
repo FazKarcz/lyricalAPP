@@ -8,7 +8,7 @@
   <h1>Lista Artystów</h1>
   <ul>
     {% for artist in artists %}
-      <li>{{ artist.nickname }}</li>
+        <li><a href="{% url 'artist:artist_detail' artist.id %}"> {{ artist.nickname }}</a></li>
     {% endfor %}
   </ul>
 </body>

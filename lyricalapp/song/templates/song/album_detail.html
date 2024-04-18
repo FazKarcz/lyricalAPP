@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyrical App</title>
+</head>
+<body>
+    <h1>{{ album.album_name }}</h1>
+    <p>Nazwa artysty: {{ album.artist }}</p>
+    <p>Data wydania: {{ album.release_date }}</p>
+    <p>Gatunek: {{ album.genre }}</p>
+    <p>Liczba piosenek: {{ album.number_of_songs }}</p>
+    <ol>
+        {% for song in songs %}
+            <li><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></li>
+        {% endfor %}
+    </ol>
+
+</body>

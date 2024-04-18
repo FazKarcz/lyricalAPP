@@ -19,4 +19,5 @@ urlpatterns = [
     path('song/', views.songList, name='song_list'),  # Dodajemy URL-e dla SongViewSet
     path('album/', views.albumList, name='album_list'),  # Dodajemy URL-e dla AlbumViewSet
     path('song/detail/<int:song_id>/', views.song_detail, name='song_detail'),
+    path('album/detail/<int:album_id>/', views.albumDetail, name='album_detail'),
 ]
