@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyrical App</title>
+</head>
+<body>
+    <a href="{% url 'dashboard' %}">Powrót</a>
+    <h1>Tutaj jest twoja lista ulubionych piosenek</h1>
+    {% for favorite in favorites %}
+        <p><a href="{% url 'song:song_detail' song_id=favorite.song.id %}">{{ favorite.song.song_name }}</a> - {{ favorite.song.artist }}</p>
+    {% endfor %}
+</body>
+</html>

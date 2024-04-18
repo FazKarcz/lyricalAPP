@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyrical App</title>
+    <link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+<body>
+  <h1>Lista Albumów</h1>
+  <ul>
+    {% for album in albums %}
+        <li><a href="{% url 'song:album_detail' album.id %}"> {{ album.album_name }}</a> - {{ album.artist }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

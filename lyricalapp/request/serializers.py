@@ -9,5 +9,4 @@ class RequestSerializer(serializers.ModelSerializer):
             'author',
             'song_name',
             'date',
-            'status'
         )

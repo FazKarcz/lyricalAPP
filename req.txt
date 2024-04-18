@@ -1,0 +1,8 @@
+﻿asgiref==3.8.1
+Django==4.2.11
+django-filter==24.2
+djangorestframework==3.15.1
+sqlparse==0.4.4
+typing_extensions==4.10.0
+tzdata==2024.1
+django-embed-video==1.4.9
