@@ -43,6 +43,12 @@ def albumList(request):
     return render(request, 'song/album_list.html', {'albums': albums})
 
 
+def albumDetail(request, album_id):
+    album = get_object_or_404(Album, pk=album_id)
+    songs = Song.objects.filter(album=album)
+    return render(request, 'song/album_detail.html', {'album': album, 'album_id': album_id, 'songs': songs})
+
+
 def song_detail(request, song_id):
     song = get_object_or_404(Song, pk=song_id)
     comments = Comment.objects.filter(song=song)

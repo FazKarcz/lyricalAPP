@@ -36,6 +36,7 @@ class Song(models.Model):
     def __str__(self):
         return self.song_name
 
+
 class Comment(models.Model):
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
