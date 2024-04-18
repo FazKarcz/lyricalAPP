@@ -10,5 +10,6 @@ router = SimpleRouter()
 router.register('', views.ArtistViewSet, basename='Artist')
 
 urlpatterns = [
-    path('', views.artistList, name='artist_list')
+    path('', views.artistList, name='artist_list'),
+    path('detail/<int:artist_id>/', views.artistDetail, name='artist_detail')
 ]
