@@ -6,11 +6,17 @@
 </head>
 <body>
     {% block content %}
+    {% load embed_video_tags %}
+    <form method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="favorite_form">
+        <input type="submit" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
+    </form>
       <h1>{{ song.song_name }}</h1>
       <p>Artysta: {{ song.artist}}</p>
       <p>Gatunek: {{ song.genre }}</p>
       <p>Album: {{ song.album }}</p>
-      <iframe width="560" height="315" src="{{ song.link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe src = "{{ song.video_link }}" referrerpolicy="no-referrer-when-downgrade"></iframe>
       <p>Data wydania: {{ song.release_date }}</p>
       <p>Data aktualizacji: {{ song.update_date }}</p>
       <h2>Tekst piosenki:</h2>

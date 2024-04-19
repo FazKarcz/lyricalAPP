@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyrical App</title>
+</head>
+<body>
+    <a href="{% url 'dashboard' %}">Powrót</a>
+    <a href="{% url 'make_request'%}">Stwórz zgłoszenie</a>
+    <h1>Tutaj jest twoja lista zgłoszeń</h1>
+    {% for request in requests %}
+        <div>
+            <p>Zgłoszenie: {{ request.song_name }} - {{ request.author }}</p>
+            <p>Data: {{ request.date }}</p>
+            <p>Status: {{ request.status }}</p>
+            <p>------------------------------------------------------------------</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

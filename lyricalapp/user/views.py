@@ -4,6 +4,10 @@ from . forms import CreateUserForm, LoginForm
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from request.models import Request
+from request.forms import RequestForm
+from .models import Favorite
+from song.models import Song
 # Create your views here.
 
 def register(request):
@@ -57,3 +61,25 @@ def dashboard(request):
 
     return render(request,'user/dashboard.html')
 
+@login_required(login_url='login')
+def request_list(request):
+    requests = Request.objects.filter(user=request.user)
+    return render(request, 'user/request_list.html', {'requests': requests})
+
+@login_required(login_url='login')
+def make_request(request):
+    if request.method == 'POST':
+        form = RequestForm(request.POST)
+        if form.is_valid():
+            new_request = form.save(commit=False)
+            new_request.user = request.user
+            new_request.save()
+            return redirect('request_list')
+    else:
+        form = RequestForm()
+    return render(request, 'user/make_request.html', {'form': form})
+
+@login_required(login_url='login')
+def favorite_list(request):
+    favorites = Favorite.objects.filter(user=request.user)
+    return render(request, 'user/favorite_list.html', {'favorites': favorites})
