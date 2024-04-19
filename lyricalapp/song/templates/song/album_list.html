@@ -9,7 +9,7 @@
   <h1>Lista Albumów</h1>
   <ul>
     {% for album in albums %}
-        <li><a href="{% url 'song:album_detail' album.id %}"> {{ album.album_name }}</a> - {{ album.artist }}</li>
+        <li><a href="{% url 'song:album_detail' album.id %}"> {{ album.album_name }}</a> - <a href="{% url 'artist:artist_detail' artist_id=album.artist_id %}">{{ album.artist }}</a></li>
     {% endfor %}
   </ul>
 </body>
