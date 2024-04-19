@@ -7,6 +7,9 @@
 <body>
     {% block content %}
     {% load embed_video_tags %}
+    <a href="{% url 'index' %}">Powrót do strony głównej</a>
+    <a href="{% url 'song:song_list' %}">Powrót do listy piosenek</a>
+
     <form method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
         {% csrf_token %}
         <input type="hidden" name="favorite_form">

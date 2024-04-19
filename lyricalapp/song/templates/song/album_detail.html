@@ -5,6 +5,8 @@
     <title>Lyrical App</title>
 </head>
 <body>
+    <a href="{% url 'index' %}">Powrót do strony głównej</a>
+    <a href="{% url 'song:album_list' %}">Powrót do listy albumów</a>
     <h1>{{ album.album_name }}</h1>
     <p>Nazwa artysty: {{ album.artist }}</p>
     <p>Data wydania: {{ album.release_date }}</p>
