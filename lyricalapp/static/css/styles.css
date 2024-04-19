@@ -15,7 +15,7 @@ nav {
     background-color: #1E1E1C;
 }
 
-ul {
+.menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -24,12 +24,12 @@ ul {
     padding-right: 50px;
 }
 
-li {
+.menu > li {
     float: left;
     font-weight: bold;
 }
 
-li a {
+.menu > li a {
     display: block;
     color: white;
     text-align: center;
@@ -39,25 +39,27 @@ li a {
     transition: background-color 0.4s ease, font-size 0.4s ease;
 }
 
-li a:hover {
+.menu > li a:hover {
     background-color: #111;
     font-size: 110%;
 }
 
-.active {
-    background-color: #db14c7;
-}
-
-img {
+nav > img {
     float: left;
     padding: 14px 30px;
     height: 22px;
 }
 
-li:nth-child(-n + 3){
+.menu > li:nth-child(-n + 3){
     float: left;
 }
 
-li:nth-last-child(-n + 3){
+.menu > li:nth-last-child(-n + 3){
     float: right;
+}
+
+.songs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
