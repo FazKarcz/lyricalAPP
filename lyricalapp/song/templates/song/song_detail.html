@@ -10,7 +10,7 @@
     <form method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
         {% csrf_token %}
         <input type="hidden" name="favorite_form">
-        <input type="submit" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
+        <input id="fav" onclick="changeName()" type="submit" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
     </form>
       <h1>{{ song.song_name }}</h1>
         <p>Artysta: <a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist}}</a></p>
@@ -40,6 +40,13 @@
     {% else %}
         <p>Zaloguj się aby dodać komentarz.</p>
     {% endif %}
-
+<script>
+    function changeName(){
+        if(document.getElementById("fav").value === "Dodaj do ulubionych" )
+            document.getElementById("fav").value = "Usuń z ulubionych";
+        else
+            document.getElementById("fav").value = "Dodaj do ulubionych";
+    }
+</script>
 </body>
 </html>
