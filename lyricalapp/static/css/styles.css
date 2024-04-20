@@ -13,6 +13,7 @@ nav {
     z-index: 2;
     height: 50px;
     background-color: #1E1E1C;
+    font-size: 13px;
 }
 
 .menu {
@@ -44,7 +45,7 @@ nav {
     font-size: 110%;
 }
 
-nav > img {
+nav > a > img {
     float: left;
     padding: 14px 30px;
     height: 22px;
@@ -62,4 +63,40 @@ nav > img {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.songs > li {
+    float: left;
+    display: block;
+    text-align: center;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: #1E1E1C;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.songs > li a {
+    text-decoration: none;
+}
+
+.songs > li #song_name {
+    color: white;
+    font-size: 15px;
+}
+
+.songs > li #song_artist {
+    color: white;
+}
+
+main {
+margin-top: 50px;
+}
+
+.album_choice {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #1E1E1C;
 }
