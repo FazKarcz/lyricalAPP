@@ -25,6 +25,12 @@ class SongViewSet(viewsets.ModelViewSet):
 
 def songList(request):
     songs = Song.objects.all()
+    order_by = request.GET.get('order_by')
+    if order_by == 'release_date':
+        songs = songs.order_by('release_date')
+    elif order_by == 'alphabetical':
+        songs = songs.order_by('song_name')
+
     return render(request, 'song/song_list.html', {'songs': songs})
 
 

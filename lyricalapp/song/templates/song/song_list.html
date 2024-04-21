@@ -7,6 +7,13 @@
 <body>
   <a href="{% url 'index' %}">Powrót do strony głównej</a>
   <h1>Lista Piosenek</h1>
+  <form action="" method="GET">
+    <select name="order_by">
+        <option value="alphabetical">A-Z</option>
+        <option value="release_date">Release Date</option>
+    </select>
+    <button type="submit">Filter</button>
+  </form>
   <ul>
     {% for song in songs %}
       <li><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a> - {{ song.artist }}</li>
