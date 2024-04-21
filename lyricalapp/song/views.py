@@ -66,7 +66,7 @@ def song_detail(request, song_id):
                     comment.song = song
                     comment.user = request.user
                     comment.save()
-                    form = CommentForm()
+                    return redirect('song:song_detail', song_id=song_id)
             elif 'favorite_form' in request.POST:
                 if favorite:
                     favorite.delete()
