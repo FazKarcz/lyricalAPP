@@ -25,6 +25,12 @@ class SongViewSet(viewsets.ModelViewSet):
 
 def songList(request):
     songs = Song.objects.all()
+    order_by = request.GET.get('order_by')
+    if order_by == 'release_date':
+        songs = songs.order_by('release_date')
+    elif order_by == 'alphabetical':
+        songs = songs.order_by('song_name')
+
     return render(request, 'song/song_list.html', {'songs': songs})
 
 
@@ -66,7 +72,7 @@ def song_detail(request, song_id):
                     comment.song = song
                     comment.user = request.user
                     comment.save()
-                    form = CommentForm()
+                    return redirect('song:song_detail', song_id=song_id)
             elif 'favorite_form' in request.POST:
                 if favorite:
                     favorite.delete()
