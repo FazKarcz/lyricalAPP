@@ -8,7 +8,7 @@ body {
     font-family: sans-serif;
     font-size: 13px;
     margin: 0;
-    height: 100vh;
+    height: 200vh;
     display: grid;
     grid-template-columns: 30vw 10vw 10vw 30vw;
     grid-template-rows: auto;
@@ -55,6 +55,8 @@ article{
     grid-area: article;
     color: white;
     text-align: center;
+    width: 100%;
+    margin-left: 5vw;
 }
 
 footer{
@@ -114,4 +116,10 @@ nav > a > img {
 iframe{
     width: 40vw;
     height: 40vh;
+}
+
+pre{
+    font-family: RadioCanadaBig-Regular, serif;
+    font-size: 150%;
+    line-height: 1.8;
 }
