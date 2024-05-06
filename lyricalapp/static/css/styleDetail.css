@@ -33,11 +33,11 @@ main{
     grid-area: main;
     color: #000000;
     background: linear-gradient(#262724FF 0%, #656865FF 100%);
-    margin-top: -30px;
+    margin-top: -50px;
     margin-right: -10px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 30px;
+    padding-top: 50px;
     text-align: center;
     font-family: RadioCanadaBig-Regular, serif ;
 }
@@ -122,4 +122,21 @@ pre{
     font-family: RadioCanadaBig-Regular, serif;
     font-size: 150%;
     line-height: 1.8;
+}
+
+#fav{
+    background: #1e1e1c;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 6vh;
+    font-family: RadioCanadaBig-Regular, serif;
+    font-size: 130%;
+    transition: background-color 0.4s ease, font-size 0.4s ease;
+}
+
+#fav:hover{
+    background: #111;
+    font-size: 140%;
+    cursor: pointer;
 }
