@@ -53,9 +53,10 @@
     {% endif %}
     <ul>
         {% for comment in comments %}
-            <li>{{ comment.user }}
-                <ul>
-                    <li>{{ comment.content }} | {{ comment.created_date }}</li>
+            <li><p class="userLogin">{{ comment.user }}</p>
+                <div class="commentDate"># {{ comment.created_date }}</div>
+                <ul class="commentBox">
+                    <li class="userComment">{{ comment.content }}</li>
                 </ul>
             </li>
         {% endfor %}

@@ -160,37 +160,63 @@ footer > form > p > label{
 }
 
 footer > form > p > textarea{
-    width: 70%;
+    width: 60%;
     height: 5vh;
+    position: relative;
     border: none;
-    border-radius: 20px;
+    border-radius: 40px 0 0 40px;
     resize: none;
+    overflow: auto;
+    outline: none;
+    padding: 35px 10px 15px 30px;
+    left: -3.2%;
+    font-family: RadioCanadaBig-Regular, serif;
 }
 
 footer > form > button{
-    border-radius: 20px;
-    height: 4vh;
+    border-radius: 0 20px 20px 0;
+    height: 11.9vh;
     position: relative;
     border: none;
-    top:-6.7vh;
-    left: 30.5vw;
+    top:-13.7vh;
+    left: 33vw;
+    margin-bottom: -100px;
     background: linear-gradient(0.25turn, rgba(209, 109, 5, 1) 0%, rgba(219, 20, 199, 1) 100%);
     color: white;
     transition: background 0.4s ease;
-}
-
-footer > form > button:before{
-    background: linear-gradient(0.25turn, rgb(218, 20, 198) 0%, rgb(208, 109, 5) 100%);
+    font-family: RadioCanadaBig-Regular, serif;
 }
 
 footer > form > button:hover{
-    opacity: 0;
-}
-
-footer > form > button:before:hover{
-    opacity: 1;
+    background: linear-gradient(0.25turn, rgb(218, 20, 198) 0%, rgb(208, 109, 5) 100%);
 }
 
 footer > ul, footer > ul > li > ul{
     list-style-type: none;
+}
+
+.userLogin{
+    font-size: 180%;
+    margin-right: 90%;
+    font-family: RadioCanadaBig-Regular, serif;
+}
+
+.userComment{
+    padding: 12px;
+    border-radius: 20px;
+    font-family: RadioCanadaBig-Regular, serif;
+    font-size: 130%;
+    background: linear-gradient(0.25turn, rgba(209, 109, 5, 1) 0%, rgba(219, 20, 199, 1) 100%);
+}
+
+.commentBox{
+    border-left: 2px solid #D16D05;
+    width: 90%;
+}
+
+.commentDate{
+    margin-right: 70%;
+    margin-top: -2%;
+    margin-bottom: 1%;
+    font-family: RadioCanadaBig-Regular, serif;
 }
