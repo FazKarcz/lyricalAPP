@@ -21,32 +21,28 @@
     <main>
     {% block content %}
     {% load embed_video_tags %}
-      <iframe src = "{{ song.video_link }}" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <h1>{{ song.song_name }}</h1>
+      <div class="leftBar">
+        <iframe src = "{{ song.video_link }}" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <h1>{{ song.song_name }}</h1>
         <p><a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist}}</a></p>
         <p><a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></p>
         <p>Gatunek: {{ song.genre }}</p>
         <p>Data wydania: {{ song.release_date }}</p>
         <p>Data aktualizacji: {{ song.update_date }}</p>
         <form method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
-        {% csrf_token %}
-        <input type="hidden" name="favorite_form">
-        <input id="fav" onclick="changeName()" type="submit" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
-    </form>
-        </main>
-        <article>
+          {% csrf_token %}
+          <input type="hidden" name="favorite_form">
+          <input id="fav" onclick="changeName()" type="submit" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
+        </form>
+      </div>
+    </main>
+    <article>
       <pre>{{ song.lyrics }}</pre>
-        </article>
+    </article>
     {% endblock %}
     <footer>
-    <h2>Komentarze</h2>
-    <ul>
-        {% for comment in comments %}
-            <li>{{ comment.content }} - {{ comment.user }} - {{ comment.created_date }}</li>
-        {% endfor %}
-    </ul>
     {% if user.is_authenticated %}
-        <h1>Dodaj Komentarz</h1>
+        <h1>Komentarze</h1>
        <form method="post" action="{% url 'song:song_detail' song_id=song.id %}">
             {% csrf_token %}
             {{ form.as_p }}
@@ -55,6 +51,16 @@
     {% else %}
         <p>Zaloguj się aby dodać komentarz.</p>
     {% endif %}
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.user }}
+                <ul>
+                    <li>{{ comment.content }} | {{ comment.created_date }}</li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
     </footer>
 <script>
     function changeName(){
