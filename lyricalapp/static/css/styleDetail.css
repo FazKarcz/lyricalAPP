@@ -8,6 +8,7 @@ body {
     font-family: sans-serif;
     font-size: 13px;
     margin: 0;
+    width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 30vw 10vw 10vw 30vw;
@@ -15,14 +16,14 @@ body {
     column-gap: 30px;
     row-gap: 9vh;
     grid-template-areas:
-        'nav nav nav nav '
-        'main main article article'
-        'footer footer footer footer';
+        'nav nav nav nav nav'
+        'main main article article article'
+        'footer footer footer footer footer';
 }
 
 nav {
-    position: fixed;
-    width: 100%;
+    position: sticky;
+    top:0;
     height: 50px;
     background-color: #1E1E1C;
     font-size: 13px;
@@ -34,12 +35,11 @@ main{
     grid-area: main;
     color: #000000;
     background: linear-gradient(#262724FF 0%, #656865FF 100%);
-    bottom: 40px;
-    margin-top: -17px;
     margin-right: -10px;
+    margin-top: -70px;
     padding-left: 0;
     padding-right: 0;
-    padding-top: 15px;
+    padding-top: 20px;
     text-align: center;
     font-family: RadioCanadaBig-Regular, serif ;
     z-index: 0;
@@ -63,8 +63,9 @@ article{
     grid-area: article;
     color: white;
     text-align: center;
-    width: 100%;
-    margin-left: 5vw;
+    margin-top: -60px;
+    margin-left: -20px;
+    background: linear-gradient(rgba(209, 109, 5, 1) 0%, rgba(219, 20, 199, 1) 100%);
 }
 
 form{
@@ -144,7 +145,7 @@ pre{
 footer{
     grid-area: footer;
     background: linear-gradient(#656865FF 0%, #262724FF 100%);
-    width: 99vw;
+    width: 100%;
     margin-top: -70px;
     margin-left: 0;
     margin-right: 0;
@@ -155,13 +156,20 @@ footer{
     clear: both;
 }
 
+footer > form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 footer > form > p > label{
     opacity: 0;
 }
 
 footer > form > p > textarea{
-    width: 60%;
-    height: 5vh;
+    float: left;
+    width: 92%;
+    height: 5vmin;
     position: relative;
     border: none;
     border-radius: 40px 0 0 40px;
@@ -169,18 +177,15 @@ footer > form > p > textarea{
     overflow: auto;
     outline: none;
     padding: 35px 10px 15px 30px;
-    left: -3.2%;
+    margin-right: 0;
     font-family: RadioCanadaBig-Regular, serif;
 }
 
 footer > form > button{
-    border-radius: 0 20px 20px 0;
-    height: 11.9vh;
-    position: relative;
+    border-radius: 0 40px 40px 0;
+    margin-top: 16px;
+    height: 12vmin;
     border: none;
-    top:-13.7vh;
-    left: 33vw;
-    margin-bottom: -100px;
     background: linear-gradient(0.25turn, rgba(209, 109, 5, 1) 0%, rgba(219, 20, 199, 1) 100%);
     color: white;
     transition: background 0.4s ease;
