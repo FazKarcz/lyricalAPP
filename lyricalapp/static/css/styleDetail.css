@@ -162,6 +162,11 @@ footer > form{
     justify-content: center;
 }
 
+footer > p{
+    font-family: RadioCanadaBig-Regular, serif;
+    font-size: 145%;
+}
+
 footer > form > p > label{
     opacity: 0;
 }
