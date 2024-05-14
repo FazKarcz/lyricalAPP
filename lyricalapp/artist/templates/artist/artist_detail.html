@@ -5,6 +5,9 @@
     <title>Lyrical App</title>
 </head>
 <body>
+    <a href="{% url 'index' %}">Powrót do strony głównej</a>
+    <a href="{% url 'artist:artist_list' %}">Powrót do listy artystów</a>
+
     <h1>{{ artist.nickname }}</h1>
     <h3>Piosenki:</h3>
     <ol>

@@ -1,45 +1,68 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
     <title>Lyrical App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleDetail.css' %}">
 </head>
 <body>
+    <nav>
+        <a href="{% url 'index' %}"><img src="{% static 'pics/lyricus_logo.png' %}" alt="logo"></a>
+        <ul class="menu">
+            <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
+            <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
+            <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
+            <li><a href="{% url 'dashboard' %}">Profil</a></li>
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
+            <li><a href="{% url 'register' %}">Rejestracja</a></li>
+        </ul>
+    </nav>
+    <main>
     {% block content %}
     {% load embed_video_tags %}
-    <form method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
-        {% csrf_token %}
-        <input type="hidden" name="favorite_form">
-        <input id="fav" onclick="changeName()" type="submit" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
-    </form>
-      <h1>{{ song.song_name }}</h1>
-        <p>Artysta: <a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist}}</a></p>
-      <p>Gatunek: {{ song.genre }}</p>
-        <p>Album: <a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></p>
-      <iframe src = "{{ song.video_link }}" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <p>Data wydania: {{ song.release_date }}</p>
-      <p>Data aktualizacji: {{ song.update_date }}</p>
-      <h2>Tekst piosenki:</h2>
-      <p>{{ song.lyrics }}</p>
+      <div class="leftBar">
+        <iframe src = "{{ song.video_link }}" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <h1>{{ song.song_name }}</h1>
+        <p><a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist}}</a></p>
+        <p><a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></p>
+        <p>Gatunek: {{ song.genre }}</p>
+        <p>Data wydania: {{ song.release_date }}</p>
+        <p>Data aktualizacji: {{ song.update_date }}</p>
+        <form method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
+          {% csrf_token %}
+          <input type="hidden" name="favorite_form">
+          <input id="fav" onclick="changeName()" type="submit" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
+        </form>
+      </div>
+    </main>
+    <article>
+      <pre>{{ song.lyrics }}</pre>
+    </article>
     {% endblock %}
-
-
-    <h2>Komentarze</h2>
-    <ul>
-        {% for comment in comments %}
-            <li>{{ comment.content }} - {{ comment.user }} - {{ comment.created_date }}</li>
-        {% endfor %}
-    </ul>
+    <footer>
     {% if user.is_authenticated %}
-        <h1>Dodaj Komentarz</h1>
+        <h1>Komentarze</h1>
        <form method="post" action="{% url 'song:song_detail' song_id=song.id %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Dodaj komentarz</button>
+            <button type="submit" name="comment_form">Dodaj komentarz</button>
         </form>
     {% else %}
         <p>Zaloguj się aby dodać komentarz.</p>
     {% endif %}
+    <ul>
+        {% for comment in comments %}
+            <li><p class="userLogin">{{ comment.user }}</p>
+                <div class="commentDate"># {{ comment.created_date }}</div>
+                <ul class="commentBox">
+                    <li class="userComment">{{ comment.content }}</li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+    </footer>
 <script>
     function changeName(){
         if(document.getElementById("fav").value === "Dodaj do ulubionych" )

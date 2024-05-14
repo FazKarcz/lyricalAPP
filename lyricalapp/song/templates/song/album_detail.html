@@ -1,10 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
     <title>Lyrical App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleDetail.css' %}">
 </head>
 <body>
+    <a href="{% url 'index' %}">Powrót do strony głównej</a>
+    <a href="{% url 'song:album_list' %}">Powrót do listy albumów</a>
     <h1>{{ album.album_name }}</h1>
     <p>Nazwa artysty: <a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></p>
     <p>Data wydania: {{ album.release_date }}</p>

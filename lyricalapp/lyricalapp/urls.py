@@ -25,5 +25,6 @@ urlpatterns = [
     path('artist/', include('artist.urls'), name='artist'),
     path('song/', include('song.urls')),
     path('request/', include('request.urls')),
-    path('user/', include('user.urls'), name="user")
+    path('user/', include('user.urls'), name="user"),
+    path('contactpage/', include('contactpage.urls'), name='contactpage')
 ]
