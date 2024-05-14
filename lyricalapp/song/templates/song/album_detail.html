@@ -4,20 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Lyrical App</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styleDetail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleAlbumDetali.css' %}">
 </head>
 <body>
-    <a href="{% url 'index' %}">Powrót do strony głównej</a>
-    <a href="{% url 'song:album_list' %}">Powrót do listy albumów</a>
-    <h1>{{ album.album_name }}</h1>
-    <p>Nazwa artysty: <a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></p>
-    <p>Data wydania: {{ album.release_date }}</p>
-    <p>Gatunek: {{ album.genre }}</p>
-    <p>Liczba piosenek: {{ album.number_of_songs }}</p>
-    <ol>
-        {% for song in songs %}
-            <li><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></li>
-        {% endfor %}
-    </ol>
-
+    <nav>
+        <a href="{% url 'index' %}"><img src="{% static 'pics/lyricus_logo.png' %}" alt="logo"></a>
+        <ul class="menu">
+            <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
+            <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
+            <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
+            <li><a href="{% url 'dashboard' %}">Profil</a></li>
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
+            <li><a href="{% url 'register' %}">Rejestracja</a></li>
+        </ul>
+    </nav>
+        {% if album.album_cover %}
+            <img src="{{ album.album_cover.url }}" alt="{{ album.album_name }}">
+        {% else %}
+            <p>No cover image for this album.</p>
+        {% endif %}
+        <div class="topBar">
+            <h1>{{ album.album_name }}</h1>
+            <h2><a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></h2>
+        </div>
+        <div class="leftInfo">
+            <div class="boxContent">
+                <p>Data wydania: {{ album.release_date }}</p>
+                <p>Gatunek: {{ album.genre }}</p>
+                <p>Liczba piosenek: {{ album.number_of_songs }}</p>
+            </div>
+        </div>
+        <article>
+            <ol>
+                {% for song in songs %}
+                    <li><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></li>
+                {% endfor %}
+            </ol>
+        </article>
 </body>

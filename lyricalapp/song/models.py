@@ -18,6 +18,7 @@ class Album(models.Model):
     release_date = models.DateField()
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)  # Po ID z tabeli artist
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, default=0)  # Domyślna wartość dla pola genre
+    album_cover = models.ImageField(upload_to='album_covers/', null=True, blank=True)
 
     def __str__(self):
         return self.album_name
