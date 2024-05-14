@@ -72,6 +72,7 @@ ol > li{
     margin-bottom: 2vh;
     padding: 10px;
     width: 90%;
+    font-family: RadioCanadaBig-Regular, Serif;
     transition: background 0.4s ease, font-size 0.4s ease;
 }
 
