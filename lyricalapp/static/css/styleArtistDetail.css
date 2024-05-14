@@ -1,0 +1,14 @@
+@import "styleAlbumDetali.css";
+
+.topBar > h1{
+    font-size: 300%;
+}
+
+.leftInfo{
+    padding-left: 20px;
+}
+
+.leftInfo > h3, article > h3{
+    text-align: center;
+    font-size: 150%;
+}

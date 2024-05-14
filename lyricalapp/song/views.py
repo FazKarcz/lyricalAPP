@@ -6,11 +6,12 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import Q
 from .models import Song, Album, Comment
 from .serializers import SongSerializer, AlbumSerializer
 from .forms import CommentForm
 from user.models import Favorite
+
 
 
 class SongViewSet(viewsets.ModelViewSet):
@@ -26,10 +27,16 @@ class SongViewSet(viewsets.ModelViewSet):
 def songList(request):
     songs = Song.objects.all()
     order_by = request.GET.get('order_by')
+    search_query = request.GET.get('search_query')
+
+
     if order_by == 'release_date':
         songs = songs.order_by('release_date')
     elif order_by == 'alphabetical':
         songs = songs.order_by('song_name')
+
+    if search_query:
+        songs = songs.filter(Q(song_name__icontains=search_query))
 
     return render(request, 'song/song_list.html', {'songs': songs})
 
@@ -46,6 +53,11 @@ class AlbumViewSet(viewsets.ModelViewSet):
 
 def albumList(request):
     albums = Album.objects.all()
+    search_query = request.GET.get('search_query')
+
+
+    if search_query:
+        albums = albums.filter(Q(album_name__icontains=search_query))
     return render(request, 'song/album_list.html', {'albums': albums})
 
 

@@ -19,6 +19,12 @@
     </nav>
     <main>
     <h1>Lista Piosenek</h1>
+        <form method="GET" action="">
+            <input type="text" name="search_query" placeholder="Search songs...">
+            <input type="submit" value="Search">
+        </form>
+        <h1>Wynik wyszukiwania...</h1>
+
         <ul class="songs">
             {% for song in songs %}
                 <li><a href="{% url 'song:song_detail' song.id %}"><div id="song_name">{{ song.song_name }}</div></a><a href="{% url 'artist:artist_detail' song.artist_id %}"><div id="song_artist">{{ song.artist }}</div></a></li>
