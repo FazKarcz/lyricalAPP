@@ -157,6 +157,6 @@ EMAIL_HOST_USER, EMAIL_HOST_PASSWORD pobieramy ze strony mailtrap z naszego inbo
 '''
 
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '*********49e'
-EMAIL_HOST_PASSWORD = '**********740e'
+EMAIL_HOST_USER = 'c99e798ed4849e'
+EMAIL_HOST_PASSWORD = '6bee678f1c740e'
 EMAIL_PORT = '2525'
