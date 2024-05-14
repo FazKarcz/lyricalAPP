@@ -2,16 +2,28 @@
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <title>Lyrical App</title>
     <link rel="stylesheet" href="../../static/css/styles.css">
+    <title>Lyrical App</title>
 </head>
 <body>
-  <a href="{% url 'index' %}">Powrót do strony głównej</a>
-  <h1>Lista Albumów</h1>
-  <ul>
-    {% for album in albums %}
-        <li><a href="{% url 'song:album_detail' album.id %}"> {{ album.album_name }}</a> - {{ album.artist }}</li>
-    {% endfor %}
-  </ul>
+    <nav>
+        <a href="{% url 'index' %}"><img src="../../static/pics/lyricus_logo.png"></a>
+        <ul class="menu">
+            <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
+            <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
+            <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
+            <li><a href="{% url 'dashboard' %}">Profil</a></li>
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
+            <li><a href="{% url 'register' %}">Rejestracja</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Lista Albumów</h1>
+        <ul class="album_choice">
+            {% for album in albums %}
+                <li><a href="{% url 'song:album_detail' album.id %}"><div>{{ album.album_name }}</div></a> - <a href="{% url 'artist:artist_detail' artist_id=album.artist_id %}"><div>{{ album.artist }}</div></a></li>
+            {% endfor %}
+        </ul>
+    </main>
 </body>
 </html>

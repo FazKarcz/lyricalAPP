@@ -8,28 +8,27 @@ body {
 
 nav {
     position: fixed;
-    top: 0;
     width: 100%;
     z-index: 2;
     height: 50px;
     background-color: #1E1E1C;
+    font-size: 13px;
 }
 
-ul {
+.menu {
     list-style-type: none;
     margin: 0;
-    padding: 0;
     overflow: hidden;
     background-color: #1E1E1C;
-    padding-right: 50px;
+    padding: 0 50px 0 0;
 }
 
-li {
+.menu > li {
     float: left;
     font-weight: bold;
 }
 
-li a {
+.menu > li a {
     display: block;
     color: white;
     text-align: center;
@@ -39,25 +38,63 @@ li a {
     transition: background-color 0.4s ease, font-size 0.4s ease;
 }
 
-li a:hover {
+.menu > li a:hover {
     background-color: #111;
     font-size: 110%;
 }
 
-.active {
-    background-color: #db14c7;
-}
-
-img {
+nav > a > img {
     float: left;
     padding: 14px 30px;
     height: 22px;
 }
 
-li:nth-child(-n + 3){
+.menu > li:nth-child(-n + 3){
     float: left;
 }
 
-li:nth-last-child(-n + 3){
+.menu > li:nth-last-child(-n + 3){
     float: right;
+}
+
+.songs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.songs > li {
+    float: left;
+    display: block;
+    text-align: center;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: #1E1E1C;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.songs > li a {
+    text-decoration: none;
+}
+
+.songs > li #song_name {
+    color: white;
+    font-size: 15px;
+}
+
+.songs > li #song_artist {
+    color: white;
+}
+
+main {
+margin-top: 50px;
+}
+
+.album_choice {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #1E1E1C;
 }

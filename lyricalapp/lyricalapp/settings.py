@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -127,8 +127,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    "/static/css",
+    os.path.join(BASE_DIR, 'static')
 ]
 
 STATIC_ROOT = "/static/"
@@ -157,6 +156,6 @@ EMAIL_HOST_USER, EMAIL_HOST_PASSWORD pobieramy ze strony mailtrap z naszego inbo
 '''
 
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = 'c99e798ed4849e'
-EMAIL_HOST_PASSWORD = '6bee678f1c740e'
+EMAIL_HOST_USER = '*********49e'
+EMAIL_HOST_PASSWORD = '**********740e'
 EMAIL_PORT = '2525'
