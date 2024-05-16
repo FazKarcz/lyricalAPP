@@ -155,3 +155,8 @@ main {
 .songs_table tr:hover:not(:first-child) {
     background-color: #D16D05FF;
 }
+
+img{
+    width: 20px;
+    height: 20px;
+}
