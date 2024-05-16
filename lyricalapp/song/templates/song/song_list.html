@@ -30,9 +30,9 @@
 
         <div class="songs">
             <table class="songs_table">
-                <tr><th>Tytuł</th><th>Wykonawca</th><th>Album</th></tr>
+                <tr><th></th><th>Tytuł</th><th>Wykonawca</th><th>Album</th></tr>
                     {% for song in songs %}
-                        <tr><td><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></td><td><a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist }}</a></td><td><a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></td></tr>
+                        <tr><td><img src="{{ song.album.album_cover }}" alt="albumPic"></td><td><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></td><td><a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist }}</a></td><td><a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></td></tr>
                     {% endfor %}
             </table>
         </div>

@@ -73,10 +73,8 @@ nav > a > img {
 
 main {
     background-color: #1E1E1C;
-    margin-left: 10px;
-    margin-right:10px;
-    margin-top: 10px;
-    height: 100vh;
+    margin: 10px;
+    height: 90vh;
     color: white;
     grid-area: main;
 }
