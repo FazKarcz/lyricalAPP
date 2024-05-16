@@ -1,14 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl-PL" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/styleSongList.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/styleSongList.css' %}">
+
     <title>Lyrical App</title>
 </head>
 <body>
     <nav>
-        <a href="{% url 'index' %}"><img src="../../static/pics/lyricus_logo.png"></a>
+        <a href="{% url 'index' %}"><img src="{% static 'pics/lyricus_logo.png' %}" alt="logo"></a>
         <ul class="menu">
             <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
             <li><a href="{% url 'song:album_list' %}">Albumy</a></li>

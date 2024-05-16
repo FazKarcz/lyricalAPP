@@ -6,6 +6,8 @@
 
 .leftInfo{
     padding-left: 20px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .leftInfo > h3, article > h3{

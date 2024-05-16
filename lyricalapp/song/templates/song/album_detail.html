@@ -18,20 +18,15 @@
             <li><a href="{% url 'register' %}">Rejestracja</a></li>
         </ul>
     </nav>
-<<<<<<< HEAD
-=======
-        {% if album.album_cover %}
-            <img src="{{ album.album_cover.url }}" alt="{{ album.album_name }}">
-        {% else %}
-            <p>No cover image for this album.</p>
-        {% endif %}
->>>>>>> devArtur
         <div class="topBar">
-            <h1>{{ album.album_name }}</h1>
-            <h2><a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></h2>
-        </div>
-        <div class="leftInfo">
-            <div class="boxContent">
+            {% if album.album_cover %}
+                <img src="{{ album.album_cover.url }}" alt="{{ album.album_name }}">
+            {% else %}
+                <p>No cover image for this album.</p>
+            {% endif %}
+            <div class="rightContent">
+                <h1>{{ album.album_name }}</h1>
+                <h2><a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></h2>
                 <p>Data wydania: {{ album.release_date }}</p>
                 <p>Gatunek: {{ album.genre }}</p>
                 <p>Liczba piosenek: {{ album.number_of_songs }}</p>

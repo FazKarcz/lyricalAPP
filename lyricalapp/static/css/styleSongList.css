@@ -6,13 +6,17 @@
 }
 
 body{
-    background: #D16D05FF linear-gradient(rgba(209, 109, 5, 1) 0%, rgba(219, 20, 199, 1) 100%);
+    background: linear-gradient(rgba(209, 109, 5, 1) 0%, rgba(219, 20, 199, 1) 100%);
     font-family: sans-serif;
     font-size: 13px;
     margin: 0;
     height: 100vh;
+    display: grid;
     row-gap: 0;
     column-gap: 0;
+    grid-template-areas:
+        'nav nav nav'
+        'main main main';
 }
 
 nav {
@@ -22,6 +26,7 @@ nav {
     height: 50px;
     background-color: #1E1E1C;
     font-size: 13px;
+    grid-area: nav;
 }
 
 .menu {
@@ -71,8 +76,9 @@ main {
     margin-left: 10px;
     margin-right:10px;
     margin-top: 10px;
-    height: 100hv;
+    height: 100vh;
     color: white;
+    grid-area: main;
 }
 
 .title {
