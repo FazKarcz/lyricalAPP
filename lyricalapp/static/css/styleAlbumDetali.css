@@ -35,11 +35,15 @@ body{
     text-decoration: none;
     color: black;
     font-size: 210%;
-    transition: font-size 0.4s ease;
+    transition: font-size 0.4s ease, background-color 0.4s ease;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: -10px;
 }
 
 .rightContent > h2 > a:hover{
-    font-size: 220%;
+    font-size: 215%;
+    background-color: #D16D05;
 }
 
 .topBar > img{
@@ -51,7 +55,7 @@ body{
 }
 
 article{
-    background: linear-gradient(#656865FF 0%, #262724FF 100%);
+    background: #1e1e1c;
     margin-top: 10vh;
     margin-left: 10px;
     margin-right: 10px;
@@ -72,28 +76,38 @@ article{
 
 ol{
     font-size: 150%;
-    margin-left: -20vw;
+    margin: 2vh 0 0 -20vw;
+    list-style: none;
+    padding: 0;
+    counter-reset: item;
     grid-area: ol;
 }
 
-ol > li{
-    border-bottom: 2px solid #D16D05;
-    background: #1E1E1C;
+ol li{
+    border-bottom: 3px solid #D16D05;
+    background: #da14c5;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2vh;
     padding: 10px;
     width: 90%;
+    counter-increment: item;
     font-family: RadioCanadaBig-Regular, Serif;
     transition: background 0.4s ease, font-size 0.4s ease;
 }
 
+ol li::before{
+    content: counter(item);
+    float: left;
+}
+
 ol > li:hover{
-    background: #000000;
-    font-size: 120%;
+    background: #D16D05;
+    font-size: 105%;
 }
 
 li > a{
+    display: block;
     text-decoration: none;
     color: white;
 }
