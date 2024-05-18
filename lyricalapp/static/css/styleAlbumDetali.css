@@ -84,8 +84,8 @@ ol{
 }
 
 ol li{
-    border-bottom: 3px solid #D16D05;
-    background: #da14c5;
+    border-bottom: 3px solid #DB14C7;
+    background: #D16D05;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2vh;
@@ -102,7 +102,7 @@ ol li::before{
 }
 
 ol > li:hover{
-    background: #D16D05;
+    background: #da15c4;
     font-size: 105%;
 }
 
