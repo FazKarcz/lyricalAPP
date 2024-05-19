@@ -152,11 +152,36 @@ main {
     color: #828282;
 }
 
+.songs_table th:first-child {
+    color: #828282;
+    text-align: center;
+}
+
+.songs_table td:first-child {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
 .songs_table tr:hover:not(:first-child) {
     background-color: #D16D05FF;
 }
 
 img{
-    width: 20px;
-    height: 20px;
+    margin: 0;
+    padding: 0;
+    padding-top: 0px;
+    height: 100%;
+}
+
+.songs_table td {
+    height: 30px;
+}
+
+.songs_table td:first-child {
+    width: 4%;
+}
+
+.songs_table td:not(:first-child) {
+    width: 32%;
 }
