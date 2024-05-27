@@ -29,9 +29,10 @@
             <table class="albums_table">
                 <tr><th>#</th><th>Album</th><th>Wykonawca</th></tr>
                 {% for album in albums %}
-                    <tr><td><img src="{{ song.album.album_cover.url }}" alt="albumPic"></td><td><a href="{% url 'song:album_detail' album.id %}">{{ album.album_name }}</a></td><td><a href="{% url 'artist:artist_detail' artist_id=album.artist_id %}">{{ album.artist }}</a></td></li>
+                    <tr><td><img src="{{ album.album_cover.url }}" alt="albumPic"></td><td><a href="{% url 'song:album_detail' album.id %}">{{ album.album_name }}</a></td><td><a href="{% url 'artist:artist_detail' artist_id=album.artist_id %}">{{ album.artist }}</a></td></tr>
                 {% endfor %}
             </table>
+        </div>
     </main>
 </body>
 </html>

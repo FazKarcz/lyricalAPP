@@ -21,6 +21,11 @@
     </nav>
     <div class="topBar">
         <h1>{{ artist.nickname }}</h1>
+        {% if artist.artist_poster %}
+            <img src="{{ artist.artist_poster.url }}" alt="{{ artist.artist_poster }}">
+        {% else %}
+            <p>No poster image for this artist.</p>
+        {% endif %}
     </div>
     <div class="leftInfo">
         <h3>Piosenki:</h3>
