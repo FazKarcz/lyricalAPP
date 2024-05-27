@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/styleSongList.css' %}">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <title>Lyrical App</title>
 </head>
 <body>
@@ -27,12 +27,15 @@
                 <button type="submit" class="searchButton"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>
-
         <div class="songs">
             <table class="songs_table">
-                <tr><th></th><th>Tytuł</th><th>Wykonawca</th><th>Album</th></tr>
+                <tr><th>#</th><th>Tytuł</th><th>Wykonawca</th><th>Album</th></tr>
                     {% for song in songs %}
-                        <tr><td><img src="{{ song.album.album_cover }}" alt="albumPic"></td><td><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></td><td><a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist }}</a></td><td><a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></td></tr>
+                        {% if song.album.album_cover %}
+                            <tr><td><img src="{{ song.album.album_cover.url }}" alt="albumPic"></td><td><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></td><td><a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist }}</a></td><td><a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></td></tr>
+                        {% else %}
+                            <tr><td>AlbumPic</td><td><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></td><td><a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist }}</a></td><td><a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></td></tr>
+                        {% endif %}
                     {% endfor %}
             </table>
         </div>

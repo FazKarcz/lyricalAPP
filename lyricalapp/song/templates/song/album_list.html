@@ -2,7 +2,7 @@
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link rel="stylesheet" href="../../static/css/styleAlbumList.css">
     <title>Lyrical App</title>
 </head>
 <body>
@@ -18,17 +18,20 @@
         </ul>
     </nav>
     <main>
-        <h1>Lista Albumów</h1>
-            <form method="GET" action="">
-            <input type="text" name="search_query" placeholder="Search albums...">
-            <input type="submit" value="Search">
-        </form>
-        <h1>Wynik wyszukiwania...</h1>
-        <ul class="album_choice">
-            {% for album in albums %}
-                <li><a href="{% url 'song:album_detail' album.id %}"><div>{{ album.album_name }}</div></a> - <a href="{% url 'artist:artist_detail' artist_id=album.artist_id %}"><div>{{ album.artist }}</div></a></li>
-            {% endfor %}
-        </ul>
+        <h1 class="title">Lista Albumów</h1>
+        <div class="wrap">
+            <form action="" class="searchbar" method="GET">
+                <input type="text" class="searchTerm" name="search_query" placeholder="Search albums...">
+                <button type="submit" class="searchButton"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+        <div class="albums">
+            <table class="albums_table">
+                <tr><th>#</th><th>Album</th><th>Wykonawca</th></tr>
+                {% for album in albums %}
+                    <tr><td><img src="{{ song.album.album_cover.url }}" alt="albumPic"></td><td><a href="{% url 'song:album_detail' album.id %}">{{ album.album_name }}</a></td><td><a href="{% url 'artist:artist_detail' artist_id=album.artist_id %}">{{ album.artist }}</a></td></li>
+                {% endfor %}
+            </table>
     </main>
 </body>
 </html>

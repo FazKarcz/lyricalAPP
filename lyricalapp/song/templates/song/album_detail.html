@@ -27,12 +27,14 @@
             <div class="rightContent">
                 <h1>{{ album.album_name }}</h1>
                 <h2><a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></h2>
+            </div>
+        </div>
+        <article>
+            <div class="boxContent">
                 <p>Data wydania: {{ album.release_date }}</p>
                 <p>Gatunek: {{ album.genre }}</p>
                 <p>Liczba piosenek: {{ album.number_of_songs }}</p>
             </div>
-        </div>
-        <article>
             <ol>
                 {% for song in songs %}
                     <li><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></li>
