@@ -1,5 +1,6 @@
 import django_filters
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -29,7 +30,6 @@ def songList(request):
     order_by = request.GET.get('order_by')
     search_query = request.GET.get('search_query')
 
-
     if order_by == 'release_date':
         songs = songs.order_by('release_date')
     elif order_by == 'alphabetical':
@@ -38,7 +38,19 @@ def songList(request):
     if search_query:
         songs = songs.filter(Q(song_name__icontains=search_query))
 
-    return render(request, 'song/song_list.html', {'songs': songs})
+    # Dodaj paginację
+    paginator = Paginator(songs, 17)  # 17 piosenek na strone
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'songs': page_obj.object_list,
+        'page_obj': page_obj,
+        'order_by': order_by,
+        'search_query': search_query,
+    }
+
+    return render(request, 'song/song_list.html', context)
 
 
 class AlbumViewSet(viewsets.ModelViewSet):
@@ -52,13 +64,23 @@ class AlbumViewSet(viewsets.ModelViewSet):
 
 
 def albumList(request):
-    albums = Album.objects.all()
     search_query = request.GET.get('search_query')
-
+    albums = Album.objects.all()
 
     if search_query:
         albums = albums.filter(Q(album_name__icontains=search_query))
-    return render(request, 'song/album_list.html', {'albums': albums})
+
+    paginator = Paginator(albums, 17)  # 17 albumów na stronę
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'albums': page_obj.object_list,
+        'page_obj': page_obj,
+        'search_query': search_query
+    }
+
+    return render(request, 'song/album_list.html', context)
 
 
 def albumDetail(request, album_id):
