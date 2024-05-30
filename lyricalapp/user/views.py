@@ -30,6 +30,9 @@ def register(request):
 
 def login(request):
 
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+
     form = LoginForm()
 
     # wyciągamy z formularza logowania login i hasło

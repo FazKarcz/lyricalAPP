@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'user',
     'lyricalapp',
     'embed_video',
-    'contactpage'
+    'contactpage',
+    'hitcount'
 ]
 
 MIDDLEWARE = [
