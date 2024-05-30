@@ -2,7 +2,6 @@ from django.db import models
 from artist.models import Artist
 from django.contrib.auth.models import User
 from embed_video.fields import EmbedVideoField
-from hitcount.models import HitCountMixin, HitCount
 
 class Genre(models.Model):
     name = models.CharField(max_length=255, default='Brak')
@@ -24,7 +23,7 @@ class Album(models.Model):
         return self.album_name
 
 
-class Song(models.Model, HitCountMixin):
+class Song(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)  # Po ID z tabeli artist
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, default=0)  # Domyślna wartość dla pola genre
     album = models.ForeignKey(Album, on_delete=models.CASCADE, default=0)
@@ -34,10 +33,6 @@ class Song(models.Model, HitCountMixin):
     release_date = models.DateField()  # Data wydania
     update_date = models.DateField(auto_now=True)
     views = models.PositiveIntegerField(default=0) #wyswietlenia dla piosenek
-    hit_count_generic = models.OneToOneField(
-        HitCount, on_delete=models.CASCADE,
-        related_name='hit_count_generic_relation',
-    )
 
     def __str__(self):
         return self.song_name

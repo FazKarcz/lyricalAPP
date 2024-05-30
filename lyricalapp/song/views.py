@@ -91,7 +91,8 @@ def albumDetail(request, album_id):
 
 def song_detail(request, song_id):
     song = get_object_or_404(Song, pk=song_id)
-    song.hit_count(request)
+    song.views += 1
+    song.save()
     comments = Comment.objects.filter(song=song)
     favorite = None
 
