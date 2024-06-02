@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/styleSongList.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
     <title>Lyrical App</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
             <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
             <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
             <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
-            <li><a href="{% url 'dashboard' %}">Profil</a></li>
+            <li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-user fa-lg"></i></a></li>
             <li><a href="{% url 'login' %}">Logowanie</a></li>
             <li><a href="{% url 'register' %}">Rejestracja</a></li>
         </ul>
@@ -54,6 +54,10 @@
                         <a href="?page={{ page_obj.next_page_number }}{% if order_by %}&order_by={{ order_by }}{% endif %}{% if search_query %}&search_query={{ search_query }}{% endif %}">next</a>
                         <a href="?page={{ page_obj.paginator.num_pages }}{% if order_by %}&order_by={{ order_by }}{% endif %}{% if search_query %}&search_query={{ search_query }}{% endif %}">last &raquo;</a>
                     {% endif %}
+                    <button type="submit" class="pag"><i class="fa-solid fa-angles-left" aria-hidden="true"></i></button>
+                    <button type="submit" class="pag"><i class="fa-solid fa-angle-left" aria-hidden="true"></i></button>
+                    <button type="submit" class="pag"><i class="fa-solid fa-angle-right" aria-hidden="true"></i></button>
+                    <button type="submit" class="pag"><i class="fa-solid fa-angles-right" aria-hidden="true"></i></button>
                 </span>
             </div>
     </main>

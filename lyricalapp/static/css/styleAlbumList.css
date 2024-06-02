@@ -45,11 +45,12 @@
     background-color: #D16D05FF;
 }
 
-img{
+table img{
     margin: 0;
     padding: 0;
     padding-top: 0px;
-    height: 100%;
+    height:30px;
+    width: 30px;
 }
 
 .albums_table td {
