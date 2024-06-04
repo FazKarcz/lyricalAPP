@@ -3,7 +3,6 @@ from artist.models import Artist
 from django.contrib.auth.models import User
 from embed_video.fields import EmbedVideoField
 
-
 class Genre(models.Model):
     name = models.CharField(max_length=255, default='Brak')
 
@@ -18,6 +17,7 @@ class Album(models.Model):
     release_date = models.DateField()
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)  # Po ID z tabeli artist
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, default=0)  # Domyślna wartość dla pola genre
+    album_cover = models.ImageField(upload_to='album_covers/', null=True, blank=True)
 
     def __str__(self):
         return self.album_name
@@ -32,6 +32,7 @@ class Song(models.Model):
     video_link = EmbedVideoField(null=True)
     release_date = models.DateField()  # Data wydania
     update_date = models.DateField(auto_now=True)
+    views = models.PositiveIntegerField(default=0) #wyswietlenia dla piosenek
 
     def __str__(self):
         return self.song_name

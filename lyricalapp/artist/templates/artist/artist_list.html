@@ -5,11 +5,29 @@
     <title><Lyrical App</title>
 </head>
 <body>
+  <a href="{% url 'index' %}">Powrót do strony głównej</a>
   <h1>Lista Artystów</h1>
   <ul>
     {% for artist in artists %}
         <li><a href="{% url 'artist:artist_detail' artist.id %}"> {{ artist.nickname }}</a></li>
     {% endfor %}
   </ul>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1{% if search_query %}&search_query={{ search_query }}{% endif %}">&laquo; pierwsza</a>
+                    <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search_query={{ search_query }}{% endif %}">poprzednia</a>
+                {% endif %}
+
+                <span class="current">
+                    Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search_query={{ search_query }}{% endif %}">następna</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}{% if search_query %}&search_query={{ search_query }}{% endif %}">ostatnia &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
 </body>
 </html>

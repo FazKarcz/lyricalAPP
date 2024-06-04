@@ -1,6 +1,14 @@
 from django.urls import path
+from rest_framework.routers import SimpleRouter
 from . import views
 
+login_router = SimpleRouter()
+register_router = SimpleRouter()
+dashboard_router = SimpleRouter()
+
+login_router.register('', views.login, basename='login')
+register_router.register('', views.register, basename='register')
+dashboard_router.register('', views.dashboard, basename='dashboard')
 
 urlpatterns = [
     path('', views.dashboard, name="dashboard"),  #widok konta

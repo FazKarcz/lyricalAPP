@@ -1,0 +1,59 @@
+@import "styleAlbumDetali.css";
+
+body{
+    grid-template-areas:
+        'nav nav nav nav nav nav'
+        'topB topB topB topB topB topB'
+        'leftI leftI leftI article article article';
+}
+
+.topBar{
+    display: flex;
+    margin-top: -85px;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.topBar > h1{
+    font-size: 350%;
+    margin-top: 14vh;
+}
+
+.topBar > img{
+    border: 15px solid black;
+    border-radius: 100%;
+}
+
+.leftInfo{
+    padding-left: 10px;
+    margin-left: 10px;
+    text-align: center;
+    font-weight: bold;
+    background: #1e1e1c;
+    grid-area: leftI;
+}
+
+.leftInfo > ol{
+    color: white;
+}
+
+.leftInfo > h3, article > h3{
+    text-align: center;
+    color: #ffffff;
+    font-size: 150%;
+}
+
+article{
+    margin-top: 0;
+    background: #1e1e1c;
+    margin-right: 10px;
+}
+
+article > ol {
+    margin-left: 35px;
+}
+
+ol{
+    margin: 0;
+}
