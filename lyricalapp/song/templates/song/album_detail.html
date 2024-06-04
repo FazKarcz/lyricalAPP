@@ -14,8 +14,11 @@
             <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
             <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
             <li><a href="{% url 'dashboard' %}">Profil</a></li>
+            {% if user.is_authenticated %}
+            {% else %}
             <li><a href="{% url 'login' %}">Logowanie</a></li>
             <li><a href="{% url 'register' %}">Rejestracja</a></li>
+            {% endif %}
         </ul>
     </nav>
         <div class="topBar">
@@ -29,7 +32,7 @@
                 <h2><a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></h2>
             </div>
         </div>
-        <article>
+        <article class="artAlbum">
             <div class="boxContent">
                 <p>Data wydania: {{ album.release_date }}</p>
                 <p>Gatunek: {{ album.genre }}</p>

@@ -3,12 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Lyrical App</title>
+    <link rel="stylesheet" href="../../static/css/styleDashboard.css">
+    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>Tutaj jest strona konta</h1>
-<a href="{% url 'index' %}">Stronga główna</a>
-<a href="{% url 'request_list' %}">Zgłoszenia</a>
-<a href="{% url 'favorite_list' %}">Ulubione</a>
-<a href="{% url 'logout' %}">Logout</a>
+    <nav>
+        <a href="{% url 'index' %}"><img src="../../static/pics/lyricus_logo.png"></a>
+        <ul class="menu">
+            <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
+            <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
+            <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
+            <li><a href="{% url 'dashboard' %}">Profil</a></li>
+            {% if user.is_authenticated %}
+            {% else %}
+            <li><a href="{% url 'login' %}">Logowanie</a></li>
+            <li><a href="{% url 'register' %}">Rejestracja</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <main>
+        <div class="glowna">
+            <ul class="zabijciemnie">
+                <li><i class="fa-solid fa-user fa-lg"></i></li>
+                <li class="account">Profil</li>
+                <li><a href="{% url 'logout' %}" class="wyloguj">Wyloguj</a></li>
+            </ul>
+        </div>
+        <div class="choose">
+            <ul class="opcje">
+                <li class="opcje1"><a href="{% url 'request_list' %}">Zgłoszenia</a></li>
+                <li class="opcje2"><a href="{% url 'favorite_list' %}">Ulubione</a></li>
+                <li class="opcje3"></li>
+            </ul>
+        </div>
+    </main>
 </body>
 </html>

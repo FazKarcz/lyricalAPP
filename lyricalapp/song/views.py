@@ -39,7 +39,7 @@ def songList(request):
         songs = songs.filter(Q(song_name__icontains=search_query))
 
     # Dodaj paginację
-    paginator = Paginator(songs, 17)  # 17 piosenek na strone
+    paginator = Paginator(songs, 10)  # 10 piosenek na strone
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -70,7 +70,7 @@ def albumList(request):
     if search_query:
         albums = albums.filter(Q(album_name__icontains=search_query))
 
-    paginator = Paginator(albums, 17)  # 17 albumów na stronę
+    paginator = Paginator(albums, 10)  # 10 albumów na stronę
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
