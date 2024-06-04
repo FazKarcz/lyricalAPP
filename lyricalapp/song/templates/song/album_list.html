@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/css/styleAlbumList.css">
+    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
     <title>Lyrical App</title>
 </head>
 <body>
@@ -37,21 +38,42 @@
             </table>
         </div>
         <div class="pagination">
-            <span class="step-links">
+                <span class="step-links">
                 {% if page_obj.has_previous %}
-                    <a href="?page=1{% if search_query %}&search_query={{ search_query }}{% endif %}">&laquo; first</a>
-                    <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search_query={{ search_query }}{% endif %}">previous</a>
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="page" value="1">
+                        {% if order_by %}<input type="hidden" name="order_by" value="{{ order_by }}">{% endif %}
+                        {% if search_query %}<input type="hidden" name="search_query" value="{{ search_query }}">{% endif %}
+                        <button type="submit" class="pag"><i class="fa-solid fa-angles-left" aria-hidden="true"></i></button>
+                    </form>
+
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}">
+                        {% if order_by %}<input type="hidden" name="order_by" value="{{ order_by }}">{% endif %}
+                        {% if search_query %}<input type="hidden" name="search_query" value="{{ search_query }}">{% endif %}
+                        <button type="submit" class="pag"><i class="fa-solid fa-angle-left" aria-hidden="true"></i></button>
+                    </form>
                 {% endif %}
 
-                <span class="current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
+                    <span class="current">
+                        Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}
+                    </span>
 
                 {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search_query={{ search_query }}{% endif %}">next</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}{% if search_query %}&search_query={{ search_query }}{% endif %}">last &raquo;</a>
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="page" value="{{ page_obj.next_page_number }}">
+                        {% if order_by %}<input type="hidden" name="order_by" value="{{ order_by }}">{% endif %}
+                        {% if search_query %}<input type="hidden" name="search_query" value="{{ search_query }}">{% endif %}
+                        <button type="submit" class="pag" ><i class="fa-solid fa-angle-right" aria-hidden="true"></i></button>
+                    </form>
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}">
+                        {% if order_by %}<input type="hidden" name="order_by" value="{{ order_by }}">{% endif %}
+                        {% if search_query %}<input type="hidden" name="search_query" value="{{ search_query }}">{% endif %}
+                        <button type="submit" class="pag"><i class="fa-solid fa-angles-right" aria-hidden="true"></i></button>
+                    </form>
                 {% endif %}
-            </span>
+                </span>
         </div>
     </main>
 </body>
