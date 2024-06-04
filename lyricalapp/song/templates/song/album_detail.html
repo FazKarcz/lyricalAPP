@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lyrical App</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styleAlbumDetail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleAlbumDetali.css' %}">
 </head>
 <body>
     <nav>
@@ -29,7 +29,7 @@
                 <h2><a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></h2>
             </div>
         </div>
-        <article>
+        <article class="artAlbum">
             <div class="boxContent">
                 <p>Data wydania: {{ album.release_date }}</p>
                 <p>Gatunek: {{ album.genre }}</p>
