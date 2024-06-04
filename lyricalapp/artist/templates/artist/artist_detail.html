@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Lyrical App</title>
-    <link rel="stylesheet" href="{% static 'css/styleArtistDetail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleArtistDetail.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
     <nav>
@@ -20,6 +21,11 @@
     </nav>
     <div class="topBar">
         <h1>{{ artist.nickname }}</h1>
+        {% if artist.artist_poster %}
+            <img src="{{ artist.artist_poster.url }}" alt="{{ artist.artist_poster }}">
+        {% else %}
+            <p>No poster image for this artist.</p>
+        {% endif %}
     </div>
     <div class="leftInfo">
         <h3>Piosenki:</h3>

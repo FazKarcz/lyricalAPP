@@ -156,6 +156,9 @@ EMAIL_HOST_USER, EMAIL_HOST_PASSWORD pobieramy ze strony mailtrap z naszego inbo
 '''
 
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '*********49e'
-EMAIL_HOST_PASSWORD = '**********740e'
+EMAIL_HOST_USER = 'a70672affcc790'
+EMAIL_HOST_PASSWORD = 'eb4adabf0abd6c'
 EMAIL_PORT = '2525'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

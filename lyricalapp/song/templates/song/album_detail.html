@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lyrical App</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styleAlbumDetali.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleAlbumDetail.css' %}">
 </head>
 <body>
     <nav>
@@ -19,17 +19,22 @@
         </ul>
     </nav>
         <div class="topBar">
-            <h1>{{ album.album_name }}</h1>
-            <h2><a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></h2>
+            {% if album.album_cover %}
+                <img src="{{ album.album_cover.url }}" alt="{{ album.album_name }}">
+            {% else %}
+                <p>No cover image for this album.</p>
+            {% endif %}
+            <div class="rightContent">
+                <h1>{{ album.album_name }}</h1>
+                <h2><a href="{% url 'artist:artist_detail' album.artist_id %}">{{ album.artist }}</a></h2>
+            </div>
         </div>
-        <div class="leftInfo">
+        <article>
             <div class="boxContent">
                 <p>Data wydania: {{ album.release_date }}</p>
                 <p>Gatunek: {{ album.genre }}</p>
                 <p>Liczba piosenek: {{ album.number_of_songs }}</p>
             </div>
-        </div>
-        <article>
             <ol>
                 {% for song in songs %}
                     <li><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></li>

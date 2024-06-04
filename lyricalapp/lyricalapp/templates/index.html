@@ -17,5 +17,18 @@
             <li><a href="{% url 'register' %}">Rejestracja</a></li>
         </ul>
     </nav>
+    <h1>Ostatnio dodane</h1>
+    <ul>
+        {% for song in latest_songs %}
+            <li>{{ song.song_name }} - {{ song.artist }} ({{ song.release_date }})</li>
+        {% endfor %}
+    </ul>
+    <h1>Najpopularniejsze</h1>
+    <ul>
+        {% for song in popular_songs %}
+            <li>{{ song.song_name }} - {{ song.artist }} ({{ song.views }})</li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>

@@ -18,7 +18,7 @@ def contact(request):
                'Contact Form Submission from {}'.format(name),
                message,
                email, # mail z ktorego zostala wyslana wiadomosc 
-               ['test@wp.pl'], # skrzynka na ktora przychodzi wiadomosc
+               ['hmutest@op.pl'], # skrzynka na ktora przychodzi wiadomosc
                [],
                reply_to=[email] # Email z formularza aby mozna bylo sie skontakotwac
             ).send()
