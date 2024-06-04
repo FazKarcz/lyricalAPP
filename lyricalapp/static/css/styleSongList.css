@@ -197,3 +197,19 @@ fa-solid fa-user {
     border: none;
     cursor: pointer;
 }
+
+.current {
+    margin: 0 10px;
+}
+
+.step-links {
+    display: flex;
+    align-items: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}

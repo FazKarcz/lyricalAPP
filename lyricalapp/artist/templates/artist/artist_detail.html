@@ -15,17 +15,20 @@
             <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
             <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
             <li><a href="{% url 'dashboard' %}">Profil</a></li>
+            {% if user.is_authenticated %}
+            {% else %}
             <li><a href="{% url 'login' %}">Logowanie</a></li>
             <li><a href="{% url 'register' %}">Rejestracja</a></li>
+            {% endif %}
         </ul>
     </nav>
     <div class="topBar">
-        <h1>{{ artist.nickname }}</h1>
         {% if artist.artist_poster %}
             <img src="{{ artist.artist_poster.url }}" alt="{{ artist.artist_poster }}">
         {% else %}
             <p>No poster image for this artist.</p>
         {% endif %}
+    <h1>{{ artist.nickname }}</h1>
     </div>
     <div class="leftInfo">
         <h3>Piosenki:</h3>

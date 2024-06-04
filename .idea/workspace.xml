@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f6fb023-72b1-4352-8f3a-b3926a9a8b13" name="Changes" comment="" />
+    <list default="true" id="5f6fb023-72b1-4352-8f3a-b3926a9a8b13" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/song/templates/song/album_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/song/templates/song/album_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/static/css/styleAlbumList.css" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/static/css/styleAlbumList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/static/css/styleSongList.css" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/static/css/styleSongList.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,8 +36,12 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "devMagda",
+    "git-widget-placeholder": "devArtur",
     "last_opened_file_path": "D:/Projects/lyricalAPP",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -39,7 +49,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PY-241.15989.155" />
+        <option value="bundled-python-sdk-babbdf50b680-7c6932dee5e4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.15989.155" />
       </set>
     </attachedChunks>
   </component>
@@ -52,6 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713212190447</updated>
       <workItem from="1716835800106" duration="71000" />
+      <workItem from="1717529461117" duration="4074000" />
     </task>
     <servers />
   </component>
