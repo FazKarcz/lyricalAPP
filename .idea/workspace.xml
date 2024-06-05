@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f6fb023-72b1-4352-8f3a-b3926a9a8b13" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/song/templates/song/album_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/song/templates/song/album_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/static/css/styleAlbumList.css" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/static/css/styleAlbumList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/static/css/styleSongList.css" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/static/css/styleSongList.css" afterDir="false" />
-    </list>
+    <list default="true" id="5f6fb023-72b1-4352-8f3a-b3926a9a8b13" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,30 +16,12 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 7
-}</component>
   <component name="ProjectId" id="2f9TFNPO3ux8C01kUaEKMYxc7AX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "devArtur",
-    "last_opened_file_path": "D:/Projects/lyricalAPP",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
