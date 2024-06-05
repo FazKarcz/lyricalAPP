@@ -151,6 +151,25 @@ REST_FRAMEWORK = {
     ),
 }
 
+LANGUAGE_CODE = 'pl'
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+LANGUAGES = [
+    ('pl', 'Polish'),
+    ('en', 'English'),
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+
+
+
+
 '''
 EMAIL_HOST_USER, EMAIL_HOST_PASSWORD pobieramy ze strony mailtrap z naszego inboxa
 '''
