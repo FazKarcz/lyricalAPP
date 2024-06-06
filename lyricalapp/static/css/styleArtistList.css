@@ -6,7 +6,6 @@ html{
 
 body {
     background: linear-gradient(rgba(255, 49, 49, 1) 0%, rgba(255, 145, 77, 1) 100%);
-
     font-size: 13px;
     margin: 0;
     height: 100vh;
@@ -149,6 +148,7 @@ nav > a > img {
 .artistItem{
     background: rgba(255, 49, 49, 1);
     box-sizing: border-box;
+    border-radius:10px;
     display: flex;
     text-align: left;
     justify-content: left;
@@ -163,6 +163,7 @@ nav > a > img {
 .artistItem > img{
     aspect-ratio: 1/1;
     width: 8vw;
+    border-radius: 10px 0 0 10px;
 }
 
 .artistItem > a{

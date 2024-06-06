@@ -40,9 +40,9 @@
       <div class="artistContainer">
           {% for artist in artists %}
               {% if artist.artist_poster %}
-                  <div class="artistItem"><img src="{{ artist.artist_poster.url }}" alt="ArtistPic"><a href="{% url 'artist:artist_detail' artist.id %}">{{ artist.nickname }}</a></div>
+                  <div class="artistItem" href="{% url 'artist:artist_detail' artist.id %}"><img src="{{ artist.artist_poster.url }}" alt="ArtistPic"><a href="{% url 'artist:artist_detail' artist.id %}">{{ artist.nickname }}</a></div>
               {% else %}
-                  <div class="artistItem"><p>ArtistPic</p><a href="{% url 'artist:artist_detai' artist.id %}">{{ artist.nickname }}</a></div>
+                  <div class="artistItem" href="{% url 'artist:artist_detail' artist.id %}"><p>ArtistPic</p><a href="{% url 'artist:artist_detai' artist.id %}">{{ artist.nickname }}</a></div>
               {% endif %}
             {% endfor %}
         </div>

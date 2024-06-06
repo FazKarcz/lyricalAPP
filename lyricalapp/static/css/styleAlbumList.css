@@ -42,7 +42,7 @@
 }
 
 .albums_table tr:hover:not(:first-child) {
-    background-color: #828282;
+    background-color: #FF3131;
 }
 
 table img{

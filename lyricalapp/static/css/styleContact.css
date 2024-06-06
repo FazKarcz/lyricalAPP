@@ -8,6 +8,7 @@ textarea {
     border-radius: 5px;
     background-color: #32322F;
     color: white;
+    resize: none;
 }
 
 button {

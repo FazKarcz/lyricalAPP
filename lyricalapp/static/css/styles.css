@@ -32,6 +32,7 @@ body {
     text-decoration: none;
     color: #FFFFFF;
     font-size: 16px;
+    transition: background 0.4s ease;
 }
 #menu a.dropdown-arrow:after {
     content: "\25BE";
