@@ -34,6 +34,8 @@ def songList(request):
         songs = songs.order_by('release_date')
     elif order_by == 'alphabetical':
         songs = songs.order_by('song_name')
+    elif order_by == 'artist':
+        songs = songs.order_by('artist__nickname')
 
     if search_query:
         songs = songs.filter(Q(song_name__icontains=search_query))
@@ -66,6 +68,14 @@ class AlbumViewSet(viewsets.ModelViewSet):
 def albumList(request):
     search_query = request.GET.get('search_query')
     albums = Album.objects.all()
+    order_by = request.GET.get('order_by')
+
+    if order_by == 'release_date':
+        albums = albums.order_by('release_date')
+    elif order_by == 'alphabetical':
+        albums = albums.order_by('album_name')
+    elif order_by == 'artist':
+        albums = albums.order_by('artist__nickname')
 
     if search_query:
         albums = albums.filter(Q(album_name__icontains=search_query))

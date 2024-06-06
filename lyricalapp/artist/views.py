@@ -25,6 +25,14 @@ class ArtistViewSet(viewsets.ModelViewSet):
 def artistList(request):
     artists = Artist.objects.all()
     search_query = request.GET.get('search_query')
+    order_by = request.GET.get('order_by')
+
+    if order_by == 'date_of_birth':
+        artists = artists.order_by('date_of_birth')
+    elif order_by == 'alphabetical':
+        artists = artists.order_by('nickname')
+    elif order_by == 'origin':
+        artists = artists.order_by('origin')
 
     if search_query:
         artists = artists.filter(Q(nickname__icontains=search_query))

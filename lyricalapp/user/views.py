@@ -9,6 +9,7 @@ from request.forms import RequestForm
 from .models import Favorite
 from song.models import Song
 from django.core.paginator import Paginator
+from django.db.models import Q
 # Create your views here.
 
 def register(request):
@@ -87,19 +88,24 @@ def make_request(request):
 @login_required(login_url='login')
 def favorite_list(request):
     favorites = Favorite.objects.filter(user=request.user)
-    paginator = Paginator(favorites, 10)  # 10 ulubionych piosenek na stronę
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
     order_by = request.GET.get('order_by')
     search_query = request.GET.get('search_query')
 
+
     if order_by == 'release_date':
-        favorites = favorites.order_by('release_date')
+        favorites = favorites.order_by('song__release_date')
     elif order_by == 'alphabetical':
-        favorites = favorites.order_by('song_name')
+        favorites = favorites.order_by('song__song_name')
+    elif order_by == 'artist':
+        favorites = favorites.order_by('song__artist__nickname')
 
     if search_query:
-        favorites = favorites.filter(Q(song_name__icontains=search_query))
+        favorites = favorites.filter(Q(song__song_name__icontains=search_query))
+
+    paginator = Paginator(favorites, 10)  # 10 ulubionych piosenek na stronę
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
         'favorites': page_obj.object_list,
         'page_obj': page_obj,

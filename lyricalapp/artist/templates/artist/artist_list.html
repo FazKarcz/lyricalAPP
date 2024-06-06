@@ -34,6 +34,12 @@
         <div class="wrap">
             <form action="" class="searchbar" method="GET">
                 <input type="text" class="searchTerm" name="search_query" placeholder="Search artists...">
+                <select name="order_by">
+                    <option value="">Sortuj według...</option>
+                    <option value="date_of_birth">Data urodzenia/powstania</option>
+                    <option value="alphabetical">Nazwa</option>
+                    <option value="origin">Pochodzenie</option>
+                </select>
                 <button type="submit" class="searchButton"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>
