@@ -1,33 +1,89 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <title><Lyrical App</title>
+    <link rel="stylesheet" href="{% static 'css/styleArtistList.css' %}">
+    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
+    <title>Lyrical App</title>
 </head>
 <body>
-  <a href="{% url 'index' %}">Powrót do strony głównej</a>
-  <h1>Lista Artystów</h1>
-  <ul>
-    {% for artist in artists %}
-        <li><a href="{% url 'artist:artist_detail' artist.id %}"> {{ artist.nickname }}</a></li>
-    {% endfor %}
-  </ul>
+  <nav id='menu'>
+        <a href="{% url 'index' %}"><img src="{% static 'pics/lyricus_logo2.png' %}" alt="logo"></a>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
+            <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
+            <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
+            <li><a class='dropdown-arrow' href='#'><i class="fa fa-user" aria-hidden="true"></i></a>
+            <ul class='sub-menus'>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'request_list' %}">Zgłoszenia</a></li>
+                <li><a href="{% url 'favorite_list' %}">Ulubione</a></li>
+                <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}" >Logowanie</a></li>
+                <li><a href="{% url 'register' %}">Rejestracja</a></li>
+                {% endif %}
+            </ul>
+            <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
+        </ul>
+    </nav>
+  <main>
+      <h1 class="title">Lista Artystów</h1>
+        <div class="wrap">
+            <form action="" class="searchbar" method="GET">
+                <input type="text" class="searchTerm" name="search_query" placeholder="Search artists...">
+                <button type="submit" class="searchButton"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+      <div class="artistContainer">
+          {% for artist in artists %}
+              {% if artist.artist_poster %}
+                  <div class="artistItem" href="{% url 'artist:artist_detail' artist.id %}"><img src="{{ artist.artist_poster.url }}" alt="ArtistPic"><a href="{% url 'artist:artist_detail' artist.id %}">{{ artist.nickname }}</a></div>
+              {% else %}
+                  <div class="artistItem" href="{% url 'artist:artist_detail' artist.id %}"><p>ArtistPic</p><a href="{% url 'artist:artist_detai' artist.id %}">{{ artist.nickname }}</a></div>
+              {% endif %}
+            {% endfor %}
+        </div>
         <div class="pagination">
-            <span class="step-links">
+                <span class="step-links">
                 {% if page_obj.has_previous %}
-                    <a href="?page=1{% if search_query %}&search_query={{ search_query }}{% endif %}">&laquo; pierwsza</a>
-                    <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search_query={{ search_query }}{% endif %}">poprzednia</a>
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="page" value="1">
+                        {% if order_by %}<input type="hidden" name="order_by" value="{{ order_by }}">{% endif %}
+                        {% if search_query %}<input type="hidden" name="search_query" value="{{ search_query }}">{% endif %}
+                        <button type="submit" class="pag"><i class="fa-solid fa-angles-left" aria-hidden="true"></i></button>
+                    </form>
+
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}">
+                        {% if order_by %}<input type="hidden" name="order_by" value="{{ order_by }}">{% endif %}
+                        {% if search_query %}<input type="hidden" name="search_query" value="{{ search_query }}">{% endif %}
+                        <button type="submit" class="pag"><i class="fa-solid fa-angle-left" aria-hidden="true"></i></button>
+                    </form>
                 {% endif %}
 
-                <span class="current">
-                    Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
-                </span>
+                    <span class="current">
+                        Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}
+                    </span>
 
                 {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search_query={{ search_query }}{% endif %}">następna</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}{% if search_query %}&search_query={{ search_query }}{% endif %}">ostatnia &raquo;</a>
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="page" value="{{ page_obj.next_page_number }}">
+                        {% if order_by %}<input type="hidden" name="order_by" value="{{ order_by }}">{% endif %}
+                        {% if search_query %}<input type="hidden" name="search_query" value="{{ search_query }}">{% endif %}
+                        <button type="submit" class="pag" ><i class="fa-solid fa-angle-right" aria-hidden="true"></i></button>
+                    </form>
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}">
+                        {% if order_by %}<input type="hidden" name="order_by" value="{{ order_by }}">{% endif %}
+                        {% if search_query %}<input type="hidden" name="search_query" value="{{ search_query }}">{% endif %}
+                        <button type="submit" class="pag"><i class="fa-solid fa-angles-right" aria-hidden="true"></i></button>
+                    </form>
                 {% endif %}
-            </span>
-        </div>
+                </span>
+            </div>
+  </main>
 </body>
 </html>

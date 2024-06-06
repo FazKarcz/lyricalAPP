@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import "styles.css";
 
 @font-face {
     font-family: "RadioCanadaBig-Regular";
@@ -101,7 +102,7 @@ main {
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     padding: 5px;
-    background-color: #FF4436;
+    background-color: #FF3131;
     height: 20px;
     outline: none;
 }
@@ -116,7 +117,7 @@ main {
     border: none;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
-    background: #FF4436;
+    background: #FF3131;
     cursor: pointer;
     color: #1E1E1C;
     font-size: 20px;
@@ -196,4 +197,20 @@ fa-solid fa-user {
     background-color: #1E1E1C;
     border: none;
     cursor: pointer;
+}
+
+.current {
+    margin: 0 10px;
+}
+
+.step-links {
+    display: flex;
+    align-items: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }

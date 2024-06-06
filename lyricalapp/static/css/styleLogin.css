@@ -1,0 +1,73 @@
+@import "styles.css";
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+#login-form-container {
+    background-color: #1E1E1C;
+    padding: 40px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #32322F;
+    color: white;
+}
+
+input[type="submit"] {
+    background-color: #FF3131;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #C22626;
+}
+
+.link-text {
+    color: white;
+    margin-top: 20px;
+}
+
+.link-text a {
+    text-decoration: none;
+    color: #C22626;
+}
+
+ul {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+    color: #FF3131;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    float: left;
+    font-size: 15px;
+}

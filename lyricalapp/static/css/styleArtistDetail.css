@@ -1,13 +1,18 @@
 @import "styleAlbumDetali.css";
+@import "styles.css";
+
+html{
+    background: linear-gradient(#1E1E1C,#FF914D);
+}
 
 body{
     width: 100%;
     height: 100%;
-    padding-bottom: 17.1%;
     grid-template-areas:
         'nav nav nav nav nav nav'
         'topB topB topB topB topB topB'
-        'leftI leftI leftI article article article';
+        'leftI leftI leftI article article article'
+        'cl cl cl cl cl cl';
 }
 
 nav{
@@ -30,8 +35,8 @@ nav{
 .topBar > img{
     border: 15px solid black;
     border-radius: 100%;
-    width: 20vw;
-    height: 40vh;
+    width: 18vw;
+    aspect-ratio: 190/200 ;
 }
 
 .leftInfo{
@@ -71,4 +76,9 @@ article > ol {
 
 ol{
     margin: 0;
+}
+
+.cl{
+    grid-area: cl;
+    height: 44vh;
 }
