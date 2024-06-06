@@ -73,11 +73,13 @@ nav > a > img {
 }
 
 main {
+    display: grid;
     background-color: #1E1E1C;
     margin: 10px;
     height: 90vh;
     color: white;
     grid-area: main;
+    grid-template-rows: auto auto auto 1fr auto;
 }
 
 .title {
@@ -85,6 +87,13 @@ main {
     padding: 0;
     text-align: center;
     padding-top: 10px;
+    grid-row: 1;
+    align-self: start;
+}
+
+.wrap{
+    grid-row: 2;
+    align-self: start;
 }
 
 .searchbar {
@@ -124,11 +133,11 @@ main {
 }
 
 .songs {
-    margin: 0;
-    margin-left: auto;
-    margin-right: auto;
+    width: 99%;
     padding: 10px;
     font-size:18px;
+    grid-row: 3;
+    align-self: start;
 }
 
 .songs_table {
@@ -212,5 +221,8 @@ fa-solid fa-user {
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: end;
+    height: min-content;
+    grid-row: 4;
     gap: 5px;
 }
