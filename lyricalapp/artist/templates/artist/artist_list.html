@@ -20,10 +20,10 @@
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'request_list' %}">Zgłoszenia</a></li>
                 <li><a href="{% url 'favorite_list' %}">Ulubione</a></li>
-                <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+                <li><a href="{% url 'logout' %}?next={{ request.path }}">Wyloguj</a></li>
                 {% else %}
-                <li><a href="{% url 'login' %}" >Logowanie</a></li>
-                <li><a href="{% url 'register' %}">Rejestracja</a></li>
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Logowanie</a></li>
+                <li><a href="{% url 'register' %}?next={{ request.path }}">Rejestracja</a></li>
                 {% endif %}
             </ul>
             <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
