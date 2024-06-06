@@ -20,43 +20,48 @@
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'request_list' %}">Zgłoszenia</a></li>
                 <li><a href="{% url 'favorite_list' %}">Ulubione</a></li>
-                <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+                <li><a href="{% url 'logout' %}?next={{ request.path }}">Wyloguj</a></li>
                 {% else %}
-                <li><a href="{% url 'login' %}" >Logowanie</a></li>
-                <li><a href="{% url 'register' %}">Rejestracja</a></li>
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Logowanie</a></li>
+                <li><a href="{% url 'register' %}?next={{ request.path }}">Rejestracja</a></li>
                 {% endif %}
             </ul>
             <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
         </ul>
     </nav>
     <main>
-    {% block content %}
-    {% load embed_video_tags %}
-      <div class="leftBar">
-        <iframe src = "{{ song.video_link }}" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <h1>{{ song.song_name }}</h1>
-        <p><a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist}}</a></p>
-        <p><a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></p>
-        <p>Gatunek: {{ song.genre }}</p>
-        <p>Data wydania: {{ song.release_date }}</p>
-        <p>Data aktualizacji: {{ song.update_date }}</p>
-        <form id="favoriteForm" method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
-          {% csrf_token %}
-          <input type="hidden" name="favorite_form">
-          <input id="fav" type="button" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
-        </form>
-      </div>
+        {% block content %}
+        {% load embed_video_tags %}
+        <div class="leftBar">
+            <iframe src="{{ song.video_link }}" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <h1>{{ song.song_name }}</h1>
+            <p><a href="{% url 'artist:artist_detail' song.artist_id %}">{{ song.artist}}</a></p>
+            <p><a href="{% url 'song:album_detail' song.album_id %}">{{ song.album }}</a></p>
+            <p>Gatunek: {{ song.genre }}</p>
+            <p>Data wydania: {{ song.release_date }}</p>
+            <p>Data aktualizacji: {{ song.update_date }}</p>
+            {% if user.is_authenticated %}
+            <form id="favoriteForm" method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="favorite_form">
+                <input id="fav" type="button" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
+            </form>
+            {% else %}
+            <input id="fav" type="button" value="Zaloguj się aby dodać do ulubionych">
+            {% endif %}
+        </div>
     </main>
     <article>
-      <pre>{{ song.lyrics }}</pre>
+        <pre>{{ song.lyrics }}</pre>
     </article>
     {% endblock %}
     <footer>
     {% if user.is_authenticated %}
         <h1>Komentarze</h1>
-       <form method="post" action="{% url 'song:song_detail' song_id=song.id %}">
+        <form method="post" action="{% url 'song:song_detail' song_id=song.id %}">
             {% csrf_token %}
             {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ request.path }}">
             <button type="submit" name="comment_form">Dodaj komentarz</button>
         </form>
     {% else %}
@@ -72,28 +77,27 @@
             </li>
         {% endfor %}
     </ul>
-
     </footer>
-<script>
-    document.getElementById("fav").addEventListener("click", function() {
-        var form = document.getElementById("favoriteForm");
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", form.action, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Zmiana napisu w guziku
-                var favButton = document.getElementById("fav");
-                if (favButton.value === "Dodaj do ulubionych") {
-                    favButton.value = "Usuń z ulubionych";
-                } else {
-                    favButton.value = "Dodaj do ulubionych";
+    <script>
+        document.getElementById("fav").addEventListener("click", function() {
+            var form = document.getElementById("favoriteForm");
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", form.action, true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Zmiana napisu w guziku
+                    var favButton = document.getElementById("fav");
+                    if (favButton.value === "Dodaj do ulubionych") {
+                        favButton.value = "Usuń z ulubionych";
+                    } else {
+                        favButton.value = "Dodaj do ulubionych";
+                    }
                 }
-            }
-        };
-        xhr.send(new URLSearchParams(new FormData(form)).toString());
-    });
-</script>
+            };
+            xhr.send(new URLSearchParams(new FormData(form)).toString());
+        });
+    </script>
 </body>
 </html>

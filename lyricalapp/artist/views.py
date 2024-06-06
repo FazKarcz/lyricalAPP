@@ -24,7 +24,7 @@ class ArtistViewSet(viewsets.ModelViewSet):
 
 def artistList(request):
     artists = Artist.objects.all()
-    search_query = request.GET.get('serach_query')
+    search_query = request.GET.get('search_query')
 
     if search_query:
         artists = artists.filter(Q(nickname__icontains=search_query))

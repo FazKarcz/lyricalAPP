@@ -9,6 +9,9 @@ from request.forms import RequestForm
 from .models import Favorite
 from song.models import Song
 from django.core.paginator import Paginator
+from django.contrib.auth import authenticate, login as auth_login
+from urllib.parse import urlparse
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 def register(request):
@@ -30,36 +33,32 @@ def register(request):
 
 
 def login(request):
-
     if request.user.is_authenticated:
-        return redirect('dashboard')
+        return redirect('index')
 
     form = LoginForm()
 
-    # wyciągamy z formularza logowania login i hasło
     if request.method == "POST":
         form = LoginForm(request, data=request.POST)
-
         if form.is_valid():
             username = request.POST.get('username')
             password = request.POST.get('password')
-
-            user = authenticate(request, username=username, password=password) #czy użytkownik istnieje?
+            user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                auth.login(request, user)
-                return redirect('../')
+                auth_login(request, user)
+                previous_url = request.POST.get('next') or '/'
+                if previous_url == request.build_absolute_uri():
+                    return redirect('index')
+                return redirect(previous_url)
 
-    context = {'loginform':form}
-
-    return render(request,'user/login.html', context=context)
+    context = {'loginform': form, 'next': request.GET.get('next', '/')}
+    return render(request, 'user/login.html', context=context)
 
 def logout(request):
-
     auth.logout(request)
-    previous_url = request.META.get('HTTP_REFERER', '/')
-
-    return redirect(previous_url)
+    next_url = request.GET.get('next', '/')
+    return redirect(next_url)
 
 @login_required(login_url='login')
 def dashboard(request):

@@ -30,10 +30,10 @@
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'request_list' %}">Zgłoszenia</a></li>
                 <li><a href="{% url 'favorite_list' %}">Ulubione</a></li>
-                <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+                <li><a href="{% url 'logout' %}?next={{ request.path }}">Wyloguj</a></li>
                 {% else %}
-                <li><a href="{% url 'login' %}" style="float: rigth">Logowanie</a></li>
-                <li><a href="{% url 'register' %}">Rejestracja</a></li>
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Logowanie</a></li>
+                <li><a href="{% url 'register' %}?next={{ request.path }}">Rejestracja</a></li>
                 {% endif %}
             </ul>
             <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
@@ -42,7 +42,7 @@
     <h1>Ostatnio dodane</h1>
     <ul>
         {% for song in latest_songs %}
-            <li>{{ song.song_name }} - {{ song.artist }} ({{ song.release_date }})</li>
+            <li><img src="{{ song.album.album_cover.url }}" alt="albumPic"> | {{ song.song_name }} - {{ song.artist }} ({{ song.release_date }})</li>
         {% endfor %}
     </ul>
     <h1>Najpopularniejsze</h1>
