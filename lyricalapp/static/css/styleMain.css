@@ -13,6 +13,7 @@ body{
 .lastAdd, .popular{
     background: #1e1e1c;
     text-align: center;
+    margin-top: 10%;
 }
 
 .lastAdd > h1, .popular > h1{
@@ -20,13 +21,17 @@ body{
 }
 
 .songContainer{
-    width: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    margin: 20px 0;
 }
 
 .gallery{
     overflow: hidden;
-    margin-left: 25px;
-    width: 42vw;
+    flex-grow: 1;
+    width: 40vw;
 }
 
 .gallery-content{
@@ -73,18 +78,4 @@ body{
     border: none;
     padding: 10px;
     cursor: pointer;
-    position: relative;
-    top: 50%;
-}
-
-.left-arrow{
-    float: left;
-    top:23vh;
-    left: 0;
-}
-
-.right-arrow{
-    float: left;
-    top:-27vh;
-    right: -45vw;
 }
