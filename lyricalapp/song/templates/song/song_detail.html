@@ -40,10 +40,10 @@
         <p>Gatunek: {{ song.genre }}</p>
         <p>Data wydania: {{ song.release_date }}</p>
         <p>Data aktualizacji: {{ song.update_date }}</p>
-        <form method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
+        <form id="favoriteForm" method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
           {% csrf_token %}
           <input type="hidden" name="favorite_form">
-          <input id="fav" onclick="changeName()" type="submit" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
+          <input id="fav" type="button" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
         </form>
       </div>
     </main>
@@ -75,12 +75,25 @@
 
     </footer>
 <script>
-    function changeName(){
-        if(document.getElementById("fav").value === "Dodaj do ulubionych" )
-            document.getElementById("fav").value = "Usuń z ulubionych";
-        else
-            document.getElementById("fav").value = "Dodaj do ulubionych";
-    }
+    document.getElementById("fav").addEventListener("click", function() {
+        var form = document.getElementById("favoriteForm");
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", form.action, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Zmiana napisu w guziku
+                var favButton = document.getElementById("fav");
+                if (favButton.value === "Dodaj do ulubionych") {
+                    favButton.value = "Usuń z ulubionych";
+                } else {
+                    favButton.value = "Dodaj do ulubionych";
+                }
+            }
+        };
+        xhr.send(new URLSearchParams(new FormData(form)).toString());
+    });
 </script>
 </body>
 </html>

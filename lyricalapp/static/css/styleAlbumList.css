@@ -1,9 +1,7 @@
 @import "styleSongList.css";
 
 .albums {
-    margin: 0;
-    margin-left: auto;
-    margin-right: auto;
+    width: 99%;
     padding: 10px;
     font-size:18px;
 }
