@@ -136,10 +136,23 @@ nav > a > img {
     float: right;
 }
 
+main{
+    display: grid;
+}
+
+main > h1{
+    grid-row: 1;
+}
+
+.wrap{
+    grid-row: 2;
+}
+
 .artistContainer{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 10px;
+    grid-row: 3;
     padding-right: 10px;
     padding-left: 10px;
     margin-top: 10px;
@@ -174,6 +187,8 @@ nav > a > img {
     padding: 1vh 2vw;
 }
 
+
 .pagination{
-    margin-top: 10px;
+    border: 1px solid white;
+    grid-row: 4;
 }
