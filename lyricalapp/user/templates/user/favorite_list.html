@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="{% static 'css/styleSongList.css' %}">
     <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
     <title>Lyrical App</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav id='menu'>
@@ -31,13 +29,6 @@
             <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
         </ul>
     </nav>
-<<<<<<< HEAD
-    <a href="{% url 'dashboard' %}">Powrót</a>
-    <h1>Tutaj jest twoja lista ulubionych piosenek</h1>
-    {% for favorite in favorites %}
-        <p><a href="{% url 'song:song_detail' song_id=favorite.song.id %}">{{ favorite.song.song_name }}</a> - {{ favorite.song.artist }}</p>
-    {% endfor %}
-=======
     <main>
         <h1 class="title">Twoje ulubione piosenki</h1>
         <div class="songs">
@@ -93,6 +84,5 @@
             </span>
         </div>
     </main>
->>>>>>> devKacper
 </body>
 </html>

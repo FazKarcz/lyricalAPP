@@ -136,42 +136,13 @@ nav > a > img {
     float: right;
 }
 
-<<<<<<< HEAD
-main{
-    display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
-}
-
-main > h1{
-    grid-row: 1;
-    height: min-content;
-    align-self: start;
-}
-
-.wrap{
-    grid-row: 2;
-    height: min-content;
-    align-self: start;
-
-}
-
-=======
->>>>>>> devKacper
 .artistContainer{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 10px;
-<<<<<<< HEAD
-    grid-row: 3;
-    height: min-content;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top: 15px;
-=======
     padding-right: 10px;
     padding-left: 10px;
     margin-top: 10px;
->>>>>>> devKacper
 }
 
 .artistItem{
@@ -203,14 +174,6 @@ main > h1{
     padding: 1vh 2vw;
 }
 
-<<<<<<< HEAD
-
-.pagination{
-    height: min-content;
-    grid-row: 4;
-    align-self: end;
-=======
 .pagination{
     margin-top: 10px;
->>>>>>> devKacper
 }
