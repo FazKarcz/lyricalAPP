@@ -25,7 +25,7 @@ class ArtistViewSet(viewsets.ModelViewSet):
 def artistList(request):
     artists = Artist.objects.all()
     search_query = request.GET.get('serach_query')
-    paginator = Paginator(artists, 17)
+    paginator = Paginator(artists, 16)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

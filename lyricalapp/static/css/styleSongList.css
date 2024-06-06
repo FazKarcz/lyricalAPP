@@ -101,7 +101,7 @@ main {
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     padding: 5px;
-    background-color: #FF4436;
+    background-color: #FF3131;
     height: 20px;
     outline: none;
 }
@@ -116,7 +116,7 @@ main {
     border: none;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
-    background: #FF4436;
+    background: #FF3131;
     cursor: pointer;
     color: #1E1E1C;
     font-size: 20px;

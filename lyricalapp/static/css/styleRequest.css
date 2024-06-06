@@ -1,0 +1,26 @@
+@import "styleContact.css";
+
+a.przycisk {
+    display: inline-block;
+    background-color: #FF3131;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+a.przycisk:hover {
+    background-color: #C22626;
+}
+
+a.przycisk {
+    line-height: normal;
+}

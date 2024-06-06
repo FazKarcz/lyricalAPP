@@ -1,0 +1,28 @@
+@import "styleRegister.css";
+
+textarea {
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #32322F;
+    color: white;
+}
+
+button {
+    background-color: #FF3131;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: #C22626;
+}
