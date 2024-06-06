@@ -1,0 +1,22 @@
+@import "styles.css";
+
+body{
+
+}
+
+.mainView{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.songItem{
+    float: left;
+    background: rgba(255, 49, 49, 1);
+    margin: 10px;
+    text-wrap: wrap;
+}
+
+.songItem > img{
+    width: 10vw;
+    aspect-ratio: 1/1;
+}
