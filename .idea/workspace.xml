@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f6fb023-72b1-4352-8f3a-b3926a9a8b13" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lyricalapp/media/album_covers/made_in_heaven.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/static/css/styleArtistDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/static/css/styleArtistDetail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/static/css/styleSongList.css" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/static/css/styleSongList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/user/templates/user/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/user/templates/user/dashboard.html" afterDir="false" />
-    </list>
+    <list default="true" id="5f6fb023-72b1-4352-8f3a-b3926a9a8b13" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +30,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging devArtur",
+    "git-widget-placeholder": "devArtur",
     "last_opened_file_path": "D:/Projects/lyricalAPP",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
