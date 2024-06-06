@@ -35,7 +35,9 @@
         {% else %}
             <p>No poster image for this artist.</p>
         {% endif %}
-    <h1>{{ artist.nickname }}</h1>
+        <div class="rightContent">
+            <h1>{{ artist.nickname }}</h1>
+        </div>
     </div>
     <div class="leftInfo">
         <h3>Piosenki:</h3>
@@ -53,8 +55,4 @@
         {% endfor %}
         </ol>
     </article>
-    <div class="cl">
-
-    </div>
-
 </body>

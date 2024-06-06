@@ -61,7 +61,7 @@
                 <div class="gallery">
                     <div class="gallery-content" id="popular-songs">
                         {% for song in popular_songs %}
-                            <div class="songItem"><a href="{% url 'song:song_detail' song.id %}"><img src="{{ song.album.album_cover.url }}" alt="albumPic"><p class="songName">{{ song.song_name }}</p><p>{{ song.artist }}</p><p>{{ song.views }}</p></a></div>
+                            <div class="songItem"><a href="{% url 'song:song_detail' song.id %}"><img src="{{ song.album.album_cover.url }}" alt="albumPic"><p class="songName">{{ song.song_name }}</p><p>{{ song.artist }}</p><p>Ilość wyświetleń: {{ song.views }}</p></a></div>
                         {% endfor %}
                     </div>
                 </div>
