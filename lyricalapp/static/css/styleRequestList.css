@@ -1,0 +1,81 @@
+@import "styles.css";
+
+main {
+    padding: 20px;
+    color: #FFFFFF;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1E1E1C;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.create-request-btn {
+    padding: 10px 20px;
+    background-color: #FF3131;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.create-request-btn:hover {
+    background-color: #C22626;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.request-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #32322F;
+    border: none;
+    border-radius: 5px;
+}
+
+.request-info {
+    color: #FFFFFF;
+}
+
+.request-info p {
+    margin: 5px 0;
+}
+
+.request-info span {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+#tak {
+    color: #7ED957;
+}
+
+#nie {
+    color: #FF0000;
+}
+
+#niewiem {
+    color: #FFFFFF;
+}
