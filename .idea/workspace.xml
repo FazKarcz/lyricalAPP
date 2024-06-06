@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f6fb023-72b1-4352-8f3a-b3926a9a8b13" name="Changes" comment="" />
+    <list default="true" id="5f6fb023-72b1-4352-8f3a-b3926a9a8b13" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/artist/templates/artist/artist_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/artist/templates/artist/artist_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/artist/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/artist/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/song/templates/song/album_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/song/templates/song/album_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/song/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/song/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/user/templates/user/favorite_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/user/templates/user/favorite_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyricalapp/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/user/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +34,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "git-widget-placeholder": "devArtur",
+    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>

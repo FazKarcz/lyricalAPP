@@ -31,6 +31,16 @@
     </nav>
     <main>
         <h1 class="title">Twoje ulubione piosenki</h1>
+            <form action="" class="searchbar" method="GET">
+                <input type="text" class="searchTerm" name="search_query" placeholder="Search favorites...">
+                <select name="order_by">
+                    <option value="">Sortuj według...</option>
+                    <option value="release_date">Data wydania</option>
+                    <option value="alphabetical">Nazwa</option>
+                    <option value="artist">Artysta</option>
+                </select>
+                <button type="submit" class="searchButton"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
         <div class="songs">
             <table class="songs_table">
                 <tr><th>#</th><th>Tytuł</th><th>Wykonawca</th><th>Album</th></tr>

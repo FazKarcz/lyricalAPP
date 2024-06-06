@@ -34,10 +34,17 @@
         <div class="wrap">
             <form action="" class="searchbar" method="GET">
                 <input type="text" class="searchTerm" name="search_query" placeholder="Search songs...">
+                <select name="order_by">
+                    <option value="">Sortuj według...</option>
+                    <option value="release_date">Data wydania</option>
+                    <option value="alphabetical">Nazwa piosenki</option>
+                    <option value="artist">Artysta</option>
+                </select>
                 <button type="submit" class="searchButton"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>
         <div class="songs">
+
             <table class="songs_table">
                 <tr><th>#</th><th>Tytuł</th><th>Wykonawca</th><th>Album</th></tr>
                     {% for song in songs %}
