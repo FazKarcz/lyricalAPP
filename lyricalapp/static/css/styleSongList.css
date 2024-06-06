@@ -221,8 +221,11 @@ fa-solid fa-user {
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     align-self: end;
     height: min-content;
     grid-row: 4;
+=======
+>>>>>>> devKacper
     gap: 5px;
 }

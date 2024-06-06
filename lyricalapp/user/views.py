@@ -8,6 +8,7 @@ from request.models import Request
 from request.forms import RequestForm
 from .models import Favorite
 from song.models import Song
+from django.core.paginator import Paginator
 # Create your views here.
 
 def register(request):
@@ -47,7 +48,7 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-                return redirect('dashboard')
+                return redirect('../')
 
     context = {'loginform':form}
 
@@ -56,8 +57,9 @@ def login(request):
 def logout(request):
 
     auth.logout(request)
+    previous_url = request.META.get('HTTP_REFERER', '/')
 
-    return redirect("login")
+    return redirect(previous_url)
 
 @login_required(login_url='login')
 def dashboard(request):
@@ -85,4 +87,23 @@ def make_request(request):
 @login_required(login_url='login')
 def favorite_list(request):
     favorites = Favorite.objects.filter(user=request.user)
-    return render(request, 'user/favorite_list.html', {'favorites': favorites})
+    paginator = Paginator(favorites, 10)  # 10 ulubionych piosenek na stronę
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    order_by = request.GET.get('order_by')
+    search_query = request.GET.get('search_query')
+
+    if order_by == 'release_date':
+        favorites = favorites.order_by('release_date')
+    elif order_by == 'alphabetical':
+        favorites = favorites.order_by('song_name')
+
+    if search_query:
+        favorites = favorites.filter(Q(song_name__icontains=search_query))
+    context = {
+        'favorites': page_obj.object_list,
+        'page_obj': page_obj,
+        'order_by': order_by,
+        'search_query': search_query,
+    }
+    return render(request, 'user/favorite_list.html', context)

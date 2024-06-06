@@ -1,8 +1,10 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl-PL" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styleSongList.css' %}">
+    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
     <title>Lyrical App</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
@@ -29,10 +31,68 @@
             <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
         </ul>
     </nav>
+<<<<<<< HEAD
     <a href="{% url 'dashboard' %}">Powrót</a>
     <h1>Tutaj jest twoja lista ulubionych piosenek</h1>
     {% for favorite in favorites %}
         <p><a href="{% url 'song:song_detail' song_id=favorite.song.id %}">{{ favorite.song.song_name }}</a> - {{ favorite.song.artist }}</p>
     {% endfor %}
+=======
+    <main>
+        <h1 class="title">Twoje ulubione piosenki</h1>
+        <div class="songs">
+            <table class="songs_table">
+                <tr><th>#</th><th>Tytuł</th><th>Wykonawca</th><th>Album</th></tr>
+                {% for favorite in page_obj %}
+                    {% if favorite.song.album.album_cover %}
+                        <tr>
+                            <td><img src="{{ favorite.song.album.album_cover.url }}" alt="albumPic"></td>
+                            <td><a href="{% url 'song:song_detail' favorite.song.id %}">{{ favorite.song.song_name }}</a></td>
+                            <td><a href="{% url 'artist:artist_detail' favorite.song.artist.id %}">{{ favorite.song.artist.nickname }}</a></td>
+                            <td><a href="{% url 'song:album_detail' favorite.song.album.id %}">{{ favorite.song.album.album_name }}</a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>AlbumPic</td>
+                            <td><a href="{% url 'song:song_detail' favorite.song.id %}">{{ favorite.song.song_name }}</a></td>
+                            <td><a href="{% url 'artist:artist_detail' favorite.song.artist.id %}">{{ favorite.song.artist.nickname }}</a></td>
+                            <td><a href="{% url 'song:album_detail' favorite.song.album.id %}">{{ favorite.song.album.album_name }}</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+            {% if page_obj.has_previous %}
+                <form method="get" style="display:inline;">
+                    <input type="hidden" name="page" value="1">
+                    <button type="submit" class="pag"><i class="fa-solid fa-angles-left" aria-hidden="true"></i></button>
+                </form>
+
+                <form method="get" style="display:inline;">
+                    <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}">
+                    <button type="submit" class="pag"><i class="fa-solid fa-angle-left" aria-hidden="true"></i></button>
+                </form>
+            {% endif %}
+
+                <span class="current">
+                    Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}
+                </span>
+
+            {% if page_obj.has_next %}
+                <form method="get" style="display:inline;">
+                    <input type="hidden" name="page" value="{{ page_obj.next_page_number }}">
+                    <button type="submit" class="pag"><i class="fa-solid fa-angle-right" aria-hidden="true"></i></button>
+                </form>
+                <form method="get" style="display:inline;">
+                    <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}">
+                    <button type="submit" class="pag"><i class="fa-solid fa-angles-right" aria-hidden="true"></i></button>
+                </form>
+            {% endif %}
+            </span>
+        </div>
+    </main>
+>>>>>>> devKacper
 </body>
 </html>
