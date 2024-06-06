@@ -40,11 +40,16 @@
         <p>Gatunek: {{ song.genre }}</p>
         <p>Data wydania: {{ song.release_date }}</p>
         <p>Data aktualizacji: {{ song.update_date }}</p>
-        <form id="favoriteForm" method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
+          {% if user.is_authenticated %}
+            <form id="favoriteForm" method="POST" action="{% url 'song:song_detail' song_id=song.id %}">
           {% csrf_token %}
+
           <input type="hidden" name="favorite_form">
           <input id="fav" type="button" value="{% if favorite %}Usuń z ulubionych{% else %}Dodaj do ulubionych{% endif %}">
-        </form>
+            </form>
+          {% else %}
+            <input id="fav" type="button" href="{% url 'login' %}"  value="Zaloguj się aby dodać do ulubionych">
+          {% endif %}
       </div>
     </main>
     <article>

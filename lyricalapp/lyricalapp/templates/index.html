@@ -43,19 +43,46 @@
         <div class="lastAdd">
             <h1>Ostatnio dodane</h1>
             <div class="songContainer">
-                {% for song in latest_songs %}
-                    <div class="songItem"><img src="{{ song.album.album_cover.url }}" alt="albumPic"><p>{{ song.song_name }}</p><p>{{ song.artist }}</p><p>{{ song.release_date }}</p></div>
-                {% endfor %}
+            <button class="arrow left-arrow" onclick="scrollGallery(-1)">&#10094</button>
+                <div class="gallery">
+                    <div class="gallery-content">
+                        {% for song in latest_songs %}
+                            <div class="songItem"><a href="{% url 'song:song_detail' song.id %}"><img src="{{ song.album.album_cover.url }}" alt="albumPic"><p class="songName">{{ song.song_name }}</p><p>{{ song.artist }}</p><p>{{ song.release_date }}</p></a></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            <button class="arrow right-arrow" onclick="scrollGallery(1)">&#10095</button>
             </div>
         </div>
         <div class="popular">
             <h1>Najpopularniejsze</h1>
             <div class="songContainer">
                 {% for song in popular_songs %}
-                    <div class="songItem"><img src="{{ song.album.album_cover.url }}" alt="albumPic"><p>{{ song.song_name }}</p><p>{{ song.artist }}</p><p>{{ song.views }}</p></div>
+                    <div class="songItem"><a href="{% url 'song:song_detail' song.id %}"><img src="{{ song.album.album_cover.url }}" alt="albumPic"><p class="songName">{{ song.song_name }}</p><p>{{ song.artist }}</p><p>{{ song.views }}</p></a></div>
                 {% endfor %}
             </div>
         </div>
     </main>
+    <script>
+        let currentIndex = 0;
+
+        function scrollGallery(direction){
+            const gallery = document.querySelector('.gallery-content');
+            const images = document.querySelectorAll('.gallery img');
+            const imageWidth = images[0].clientWidth;
+
+            currentIndex += direction;
+
+            if (currentIndex < 0){
+                currentIndex = 0;
+            } else if (currentIndex >= images.length){
+                currentIndex = images.length - 1;
+            }
+
+            const offset = -currentIndex * imageWidth;
+            gallery.style.transform = `translateX(${offset}px)`;
+
+        }
+    </script>
 </body>
 </html>
