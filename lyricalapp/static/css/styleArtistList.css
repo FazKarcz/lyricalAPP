@@ -154,7 +154,7 @@ main > h1{
 
 }
 
-.artistContainer{
+.artistContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 10px;
@@ -163,6 +163,7 @@ main > h1{
     padding-right: 10px;
     padding-left: 10px;
     margin-top: 15px;
+}
 
 .artistItem{
     background: rgba(255, 49, 49, 1);
@@ -193,7 +194,8 @@ main > h1{
     padding: 1vh 2vw;
 }
 
-.pagination{
+.pagination {
     height: min-content;
     grid-row: 4;
     align-self: end;
+}

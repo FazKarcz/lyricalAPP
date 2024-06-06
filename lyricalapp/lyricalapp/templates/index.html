@@ -42,7 +42,7 @@
     <h1>Ostatnio dodane</h1>
     <ul>
         {% for song in latest_songs %}
-            <li>{{ song.song_name }} - {{ song.artist }} ({{ song.release_date }})</li>
+            <li><img src="{{ song.album.album_cover.url }}" alt="albumPic"> | {{ song.song_name }} - {{ song.artist }} ({{ song.release_date }})</li>
         {% endfor %}
     </ul>
     <h1>Najpopularniejsze</h1>
