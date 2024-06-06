@@ -36,7 +36,7 @@ nav {
 
 main{
     grid-area: main;
-    color: #000000;
+    color: #FF914D;
     background: linear-gradient(#262724FF 0%, #656865FF 100%);
     margin-right: -10px;
     margin-top: -70px;
@@ -59,7 +59,7 @@ main h1, footer h1{
 
 p > a{
     font-size: 200%;
-    color: #000000;
+    color: #FF914D;
 }
 
 article{

@@ -99,6 +99,8 @@ def song_detail(request, song_id):
     if request.user.is_authenticated:
         favorite = Favorite.objects.filter(user=request.user, song=song).first()
 
+
+
     if request.method == 'POST':
         if request.user.is_authenticated:
             if 'comment_form' in request.POST:

@@ -29,7 +29,6 @@
             <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
         </ul>
     </nav>
-    <a href="{% url 'dashboard' %}">Powrót</a>
     <a href="{% url 'make_request'%}">Stwórz zgłoszenie</a>
     <h1>Tutaj jest twoja lista zgłoszeń</h1>
     {% for request in requests %}

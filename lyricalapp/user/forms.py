@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.forms.widgets import PasswordInput, TextInput
 
+
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
@@ -29,13 +30,16 @@ class CreateUserForm(UserCreationForm):
 
     def clean_password1(self):
         password1 = self.cleaned_data.get('password1')
-        if len(password1) < 8 or password1.isdigit():
-            raise ValidationError([
-                _('Twoje hasło nie może być zbyt podobne do twoich innych danych osobistych.'),
-                _('Twoje hasło musi zawierać co najmniej 8 znaków.'),
-                _('Twoje hasło nie może być powszechnie używanym hasłem.'),
-                _('Twoje hasło nie może składać się tylko z cyfr.')
-            ])
+        errors = []
+
+        if len(password1) < 8:
+            errors.append(_('Twoje hasło musi zawierać co najmniej 8 znaków.'))
+        if password1.isdigit():
+            errors.append(_('Twoje hasło nie może składać się tylko z cyfr.'))
+
+        if errors:
+            raise ValidationError(errors)
+
         return password1
 
     def clean_password2(self):
@@ -45,6 +49,21 @@ class CreateUserForm(UserCreationForm):
             raise ValidationError(_('Hasła się nie zgadzają.'))
         return password2
 
+
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=TextInput(), label=_('Nazwa użytkownika'))
     password = forms.CharField(widget=PasswordInput(), label=_('Hasło'))
+
+    error_messages = {
+        'invalid_login': _(
+            "Nieprawidłowa nazwa użytkownika lub hasło."
+        ),
+        'inactive': _("To konto jest nieaktywne."),
+    }
+
+    def confirm_login_allowed(self, user):
+        if not user.is_active:
+            raise ValidationError(
+                self.error_messages['inactive'],
+                code='inactive',
+            )
