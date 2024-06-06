@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5f6fb023-72b1-4352-8f3a-b3926a9a8b13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/artist/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/artist/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyricalapp/song/templates/song/song_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +18,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
   <component name="ProjectId" id="2f9TFNPO3ux8C01kUaEKMYxc7AX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -30,7 +30,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "git-widget-placeholder": "devArtur",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -52,6 +56,7 @@
       <workItem from="1716835800106" duration="71000" />
       <workItem from="1717529461117" duration="5741000" />
       <workItem from="1717675189596" duration="386000" />
+      <workItem from="1717685520419" duration="1277000" />
     </task>
     <servers />
   </component>
