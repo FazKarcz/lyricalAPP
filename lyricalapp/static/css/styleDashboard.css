@@ -1,0 +1,76 @@
+@import "styleSongList.css";
+
+.glowna {
+    margin: 50px;
+}
+
+.account {
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    float: left;
+}
+
+.opcje {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    background-color: #1E1E1C;
+    padding: 0 50px 0 0;
+}
+
+.opcje > li {
+    float: left;
+    font-weight: bold;
+    width: 33%;
+}
+
+.opcje > li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.4s ease, font-size 0.4s ease;
+}
+
+.opcje1 {
+    border-top: dotted white 1px;
+    border-collapse: collapse;
+}
+
+.opcje2 {
+    border-top: dotted white 1px;
+    border-collapse: collapse;
+}
+
+.wyloguj {
+    font-weight: bold;
+    font-size: 25px;
+    text-decoration: none;
+    background-color: #32322F;
+    color: #FFFFFF;
+    padding: 10px 20px 10px 20px;
+    float: right;
+}
+
+.zabijciemnie {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    background-color: #1E1E1C;
+    padding: 0 50px 0 0;
+}
+
+.zabijciemnie > li {
+    float: left;
+    font-weight: bold;
+    width: 33%;
+}
+
+.zabijciemnie > li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}

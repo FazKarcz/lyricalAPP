@@ -1,0 +1,244 @@
+@import "styles.css";
+
+@font-face {
+    font-family: "RadioCanadaBig-Regular";
+    src: url("../fonts/RadioCanadaBig-Regular.ttf") format("truetype");
+}
+
+body {
+    background: #262724;
+    font-family: sans-serif;
+    font-size: 13px;
+    scrollbar-color: #FF3131 #FF914D;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 30vw 10vw 10vw 30vw;
+    grid-template-rows: auto;
+    column-gap: 30px;
+    row-gap: 9vh;
+    grid-template-areas:
+        'nav nav nav nav nav'
+        'main main article article article'
+        'footer footer footer footer footer';
+}
+
+nav {
+    position: sticky;
+    top:0;
+    height: 50px;
+    background-color: #1E1E1C;
+    font-size: 13px;
+    grid-area: nav;
+    z-index: 1;
+}
+
+main{
+    grid-area: main;
+    color: #FF914D;
+    background: linear-gradient(#262724FF 0%, #656865FF 100%);
+    margin-right: -10px;
+    margin-top: -70px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 20px;
+    text-align: center;
+    font-family: RadioCanadaBig-Regular, serif ;
+    z-index: 0;
+}
+
+.leftBar{
+    position: sticky;
+    top: 60px;
+}
+
+main h1, footer h1{
+    font-size: 300%;
+}
+
+p > a{
+    font-size: 200%;
+    color: #FF914D;
+}
+
+article{
+    grid-area: article;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -70px;
+    margin-left: -20px;
+    background: linear-gradient(rgba(255, 49, 49, 1) 0%, rgba(255, 145, 77, 1) 100%);
+}
+
+form{
+    margin-bottom: 10px;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    background-color: #1E1E1C;
+    padding:0;
+}
+
+.menu > li {
+    float: left;
+    font-weight: bold;
+}
+
+.menu > li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+    height: 20px;
+    transition: background-color 0.4s ease, font-size 0.4s ease;
+}
+
+.menu > li a:hover {
+    background-color: #111;
+    font-size: 110%;
+}
+
+.menu > li:nth-child(-n + 3){
+    float: left;
+}
+
+.menu > li:nth-last-child(-n + 3){
+    float: right;
+}
+
+nav > a > img {
+    float: left;
+    padding: 14px 30px;
+    height: 22px;
+}
+
+iframe{
+    width: 40vw;
+    height: 40vh;
+}
+
+pre{
+    font-family: RadioCanadaBig-Regular, serif;
+    font-size: 160%;
+    line-height: 1.8;
+}
+
+#fav{
+    background: #1e1e1c;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 6vh;
+    font-family: RadioCanadaBig-Regular, serif;
+    font-size: 130%;
+    transition: background 0.4s ease, font-size 0.4s ease;
+}
+
+#fav:hover{
+    background: #111;
+    font-size: 140%;
+    cursor: pointer;
+}
+
+footer{
+    grid-area: footer;
+    background: linear-gradient(#656865FF 0%, #262724FF 100%);
+    width: 100%;
+    margin-top: -70px;
+    margin-left: 0;
+    margin-right: 0;
+    color: white;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    clear: both;
+}
+
+footer > form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer > p{
+    font-family: RadioCanadaBig-Regular, serif;
+    font-size: 145%;
+}
+
+footer > form > p > label{
+    opacity: 0;
+}
+
+footer > form > p > textarea{
+    float: left;
+    width: 150vmin;
+    height: 5vmin;
+    position: relative;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    resize: none;
+    overflow: auto;
+    outline: none;
+    padding: 35px 10px 15px 30px;
+    margin-right: 0;
+    font-family: RadioCanadaBig-Regular, serif;
+}
+
+footer > form > button{
+    border-radius: 0 20px 20px 0;
+    margin-top: 0;
+    margin-left: -50px;
+    height: 12vmin;
+    border: none;
+    background: #FF3131;
+    color: white;
+    transition: background 0.4s ease;
+    font-family: RadioCanadaBig-Regular, serif;
+}
+
+footer > form > button:hover{
+    background: #ff4b4b;
+}
+
+footer > ul > li > ul{
+    text-align: left;
+}
+
+footer > ul, footer > ul > li > ul{
+    list-style-type: none;
+}
+
+footer > ul > li{
+    border-left: 2px solid #FF3131;
+}
+
+.userLogin{
+    font-size: 180%;
+    margin-right: 90%;
+    font-family: RadioCanadaBig-Regular, serif;
+}
+
+.userComment{
+    padding: 12px;
+    border-radius: 10px;
+    font-family: RadioCanadaBig-Regular, serif;
+    font-size: 130%;
+    background: linear-gradient(0.25turn, #FF3131 0%, #FF914D 100%);
+}
+
+.commentBox{
+    width: 90%;
+}
+
+.commentDate{
+    margin-right: 70%;
+    margin-top: -2%;
+    margin-bottom: 1%;
+    font-family: RadioCanadaBig-Regular, serif;
+}

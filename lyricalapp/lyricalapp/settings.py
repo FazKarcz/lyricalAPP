@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'request',
     'user',
     'lyricalapp',
-    'embed_video'
+    'embed_video',
+    'contactpage'
 ]
 
 MIDDLEWARE = [
@@ -126,8 +127,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    "/static/css",
+    os.path.join(BASE_DIR, 'static')
 ]
 
 STATIC_ROOT = "/static/"
@@ -150,3 +150,34 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
 }
+
+LANGUAGE_CODE = 'pl'
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+LANGUAGES = [
+    ('pl', 'Polish'),
+    ('en', 'English'),
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+
+
+
+
+'''
+EMAIL_HOST_USER, EMAIL_HOST_PASSWORD pobieramy ze strony mailtrap z naszego inboxa
+'''
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'a70672affcc790'
+EMAIL_HOST_PASSWORD = 'eb4adabf0abd6c'
+EMAIL_PORT = '2525'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

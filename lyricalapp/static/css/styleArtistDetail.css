@@ -1,0 +1,58 @@
+@import "styleAlbumDetali.css";
+@import "styles.css";
+
+body{
+    height: 130vh;
+    grid-template-areas:
+        'nav nav nav nav nav nav'
+        'topB topB topB topB topB topB'
+        'leftI leftI leftI article article article';
+}
+
+.topBar{
+    margin-left: 10vw;
+    width: 80%;
+}
+
+.rightContent{
+    margin-top: 40px;
+}
+
+.topBar > img{
+    aspect-ratio: 1/2 auto;
+    width: 53vh;
+    height: 22vw;
+}
+
+.leftInfo{
+    background-color: #1e1e1c;
+    grid-area: leftI;
+    text-align: center;
+    padding-top: 20vh;
+    margin-left: 10px;
+    margin-top: 0;
+}
+
+h3{
+    color: white;
+}
+
+article{
+    background: #1e1e1c;
+    margin-top: 0;
+    margin-right: 10px;
+    grid-area: article;
+}
+
+ol{
+    margin: 0;
+}
+
+ol li{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li::before{
+    color: white;
+}

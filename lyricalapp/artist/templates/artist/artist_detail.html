@@ -1,21 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
     <title>Lyrical App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleArtistDetail.css' %}">
+    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>{{ artist.nickname }}</h1>
-    <h3>Piosenki:</h3>
-    <ol>
-    {% for song in songs %}
-        <li><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></li>
-    {% endfor %}
-    </ol>
-    <h3>Albumy:</h3>
-    <ol>
+    <nav id='menu'>
+        <a href="{% url 'index' %}"><img src="{% static 'pics/lyricus_logo2.png' %}" alt="logo"></a>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
+            <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
+            <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
+            <li><a class='dropdown-arrow' href='#'><i class="fa fa-user" aria-hidden="true"></i></a>
+            <ul class='sub-menus'>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'request_list' %}">Zgłoszenia</a></li>
+                <li><a href="{% url 'favorite_list' %}">Ulubione</a></li>
+                <li><a href="{% url 'logout' %}?next={{ request.path }}">Wyloguj</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Logowanie</a></li>
+                <li><a href="{% url 'register' %}?next={{ request.path }}">Rejestracja</a></li>
+                {% endif %}
+            </ul>
+            <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
+        </ul>
+    </nav>
+    <div class="topBar">
+        {% if artist.artist_poster %}
+            <img src="{{ artist.artist_poster.url }}" alt="{{ artist.artist_poster }}">
+        {% else %}
+            <p>No poster image for this artist.</p>
+        {% endif %}
+        <div class="rightContent">
+            <h1>{{ artist.nickname }}</h1>
+        </div>
+    </div>
+    <div class="leftInfo">
+        <h3>Piosenki:</h3>
+        <ol>
+            {% for song in songs %}
+            <li><a href="{% url 'song:song_detail' song.id %}">{{ song.song_name }}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
+    <article>
+        <h3>Albumy:</h3>
+        <ol>
         {% for album in albums %}
             <li><a href="{% url 'song:album_detail' album.id %}">{{ album.album_name }}</a></li>
         {% endfor %}
-    </ol>
+        </ol>
+    </article>
 </body>

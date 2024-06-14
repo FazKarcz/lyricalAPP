@@ -1,14 +1,98 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl-PL" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styleSongList.css' %}">
+    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
     <title>Lyrical App</title>
 </head>
 <body>
-    <a href="{% url 'dashboard' %}">Powrót</a>
-    <h1>Tutaj jest twoja lista ulubionych piosenek</h1>
-    {% for favorite in favorites %}
-        <p><a href="{% url 'song:song_detail' song_id=favorite.song.id %}">{{ favorite.song.song_name }}</a> - {{ favorite.song.artist }}</p>
-    {% endfor %}
+    <nav id='menu'>
+        <a href="{% url 'index' %}"><img src="{% static 'pics/lyricus_logo2.png' %}" alt="logo"></a>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
+            <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
+            <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
+            <li><a class='dropdown-arrow' href='#'><i class="fa fa-user" aria-hidden="true"></i></a>
+            <ul class='sub-menus'>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'request_list' %}">Zgłoszenia</a></li>
+                <li><a href="{% url 'favorite_list' %}">Ulubione</a></li>
+                <li><a href="{% url 'logout' %}?next={{ request.path }}">Wyloguj</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Logowanie</a></li>
+                <li><a href="{% url 'register' %}?next={{ request.path }}">Rejestracja</a></li>
+                {% endif %}
+            </ul>
+            <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1 class="title">Twoje ulubione piosenki</h1>
+            <form action="" class="searchbar" method="GET">
+                <input type="text" class="searchTerm" name="search_query" placeholder="Search favorites...">
+                <select name="order_by">
+                    <option value="">Sortuj według...</option>
+                    <option value="release_date">Data wydania</option>
+                    <option value="alphabetical">Nazwa</option>
+                    <option value="artist">Artysta</option>
+                </select>
+                <button type="submit" class="searchButton"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        <div class="songs">
+            <table class="songs_table">
+                <tr><th>#</th><th>Tytuł</th><th>Wykonawca</th><th>Album</th></tr>
+                {% for favorite in page_obj %}
+                    {% if favorite.song.album.album_cover %}
+                        <tr>
+                            <td><img src="{{ favorite.song.album.album_cover.url }}" alt="albumPic"></td>
+                            <td><a href="{% url 'song:song_detail' favorite.song.id %}">{{ favorite.song.song_name }}</a></td>
+                            <td><a href="{% url 'artist:artist_detail' favorite.song.artist.id %}">{{ favorite.song.artist.nickname }}</a></td>
+                            <td><a href="{% url 'song:album_detail' favorite.song.album.id %}">{{ favorite.song.album.album_name }}</a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>AlbumPic</td>
+                            <td><a href="{% url 'song:song_detail' favorite.song.id %}">{{ favorite.song.song_name }}</a></td>
+                            <td><a href="{% url 'artist:artist_detail' favorite.song.artist.id %}">{{ favorite.song.artist.nickname }}</a></td>
+                            <td><a href="{% url 'song:album_detail' favorite.song.album.id %}">{{ favorite.song.album.album_name }}</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+            {% if page_obj.has_previous %}
+                <form method="get" style="display:inline;">
+                    <input type="hidden" name="page" value="1">
+                    <button type="submit" class="pag"><i class="fa-solid fa-angles-left" aria-hidden="true"></i></button>
+                </form>
+
+                <form method="get" style="display:inline;">
+                    <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}">
+                    <button type="submit" class="pag"><i class="fa-solid fa-angle-left" aria-hidden="true"></i></button>
+                </form>
+            {% endif %}
+
+                <span class="current">
+                    Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}
+                </span>
+
+            {% if page_obj.has_next %}
+                <form method="get" style="display:inline;">
+                    <input type="hidden" name="page" value="{{ page_obj.next_page_number }}">
+                    <button type="submit" class="pag"><i class="fa-solid fa-angle-right" aria-hidden="true"></i></button>
+                </form>
+                <form method="get" style="display:inline;">
+                    <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}">
+                    <button type="submit" class="pag"><i class="fa-solid fa-angles-right" aria-hidden="true"></i></button>
+                </form>
+            {% endif %}
+            </span>
+        </div>
+    </main>
 </body>
 </html>

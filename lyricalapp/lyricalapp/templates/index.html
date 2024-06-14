@@ -1,21 +1,92 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link rel="stylesheet" href="{% static 'css/styleMain.css' %}">
+    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
     <title>Lyrical App</title>
+    <script>
+        function updatemenu() {
+            if (document.getElementById('responsive-menu').checked == true) {
+                document.getElementById('menu').style.borderBottomRightRadius = '0';
+                document.getElementById('menu').style.borderBottomLeftRadius = '0';
+            } else {
+                document.getElementById('menu').style.borderRadius = '0px';
+            }
+        }
+    </script>
 </head>
 <body>
-    <nav>
-        <img src="../../static/pics/lyricus_logo.png">
+    <nav id='menu'>
+        <a href="{% url 'index' %}"><img src="{% static 'pics/lyricus_logo2.png' %}" alt="logo"></a>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
         <ul>
-            <li><a href="user">Profil</a></li>
-            <li><a href="user/login">Logowanie</a></li>
-            <li><a href="user/register">Rejestracja</a></li>
-            <li><a href="artist">Artyści</a></li>
-            <li><a href="song/album">Albumy</a></li>
-            <li><a href="song/song">Piosenki</a></li>
+            <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
+            <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
+            <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
+            <li><a class='dropdown-arrow' href='#'><i class="fa fa-user" aria-hidden="true"></i></a>
+            <ul class='sub-menus'>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'request_list' %}">Zgłoszenia</a></li>
+                <li><a href="{% url 'favorite_list' %}">Ulubione</a></li>
+                <li><a href="{% url 'logout' %}?next={{ request.path }}">Wyloguj</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Logowanie</a></li>
+                <li><a href="{% url 'register' %}?next={{ request.path }}">Rejestracja</a></li>
+            {% endif %}
+            </ul>
+            <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
         </ul>
     </nav>
+    <main class="mainView">
+        <div class="lastAdd">
+            <h1>Ostatnio dodane</h1>
+            <div class="songContainer">
+                <button class="arrow left-left-arrow" onclick="scrollGallery('latest-songs', -1)">&#10094</button>
+                <div class="gallery">
+                    <div class="gallery-content" id="latest-songs">
+                        {% for song in latest_songs %}
+                            <div class="songItem"><a href="{% url 'song:song_detail' song.id %}"><img src="{{ song.album.album_cover.url }}" alt="albumPic"><p class="songName">{{ song.song_name }}</p><p>{{ song.artist }}</p><p>{{ song.release_date }}</p></a></div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <button class="arrow left-right-arrow" onclick="scrollGallery('latest-songs', 1)">&#10095</button>
+            </div>
+        </div>
+        <div class="popular">
+            <h1>Najpopularniejsze</h1>
+            <div class="songContainer">
+                <button class="arrow right-left-arrow" onclick="scrollGallery('popular-songs', -1)">&#10094</button>
+                <div class="gallery">
+                    <div class="gallery-content" id="popular-songs">
+                        {% for song in popular_songs %}
+                            <div class="songItem"><a href="{% url 'song:song_detail' song.id %}"><img src="{{ song.album.album_cover.url }}" alt="albumPic"><p class="songName">{{ song.song_name }}</p><p>{{ song.artist }}</p><p>Ilość wyświetleń: {{ song.views }}</p></a></div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <button class="arrow right-right-arrow" onclick="scrollGallery('popular-songs', 1)">&#10095</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        function scrollGallery(galleryId, direction) {
+            const gallery = document.getElementById(galleryId);
+            const images = gallery.querySelectorAll('img');
+            const imageWidth = images[0].clientWidth;
+            let currentIndex = gallery.getAttribute('data-current-index') || 0;
+            currentIndex = parseInt(currentIndex) + direction;
+
+            if (currentIndex < 0) {
+                currentIndex = 0;
+            } else if (currentIndex >= images.length) {
+                currentIndex = images.length - 1;
+            }
+
+            const offset = -currentIndex * imageWidth;
+            gallery.style.transform = `translateX(${offset}px)`;
+            gallery.setAttribute('data-current-index', currentIndex);
+        }
+    </script>
 </body>
 </html>

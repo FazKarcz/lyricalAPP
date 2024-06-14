@@ -1,0 +1,81 @@
+@import "styles.css";
+
+body{
+
+}
+
+.mainView{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 30px;
+}
+
+.lastAdd, .popular{
+    background: #1e1e1c;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.lastAdd > h1, .popular > h1{
+    color: white;
+}
+
+.songContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.gallery{
+    overflow: hidden;
+    flex-grow: 1;
+    width: 40vw;
+}
+
+.gallery-content{
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.songItem{
+    display: flex;
+    background: rgba(255, 49, 49, 1);
+    margin: 10px;
+    height: 43vh;
+    text-align: center;
+    transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.songItem:hover{
+    background: rgb(255, 91, 91);
+}
+
+.songItem > p{
+    overflow-wrap: break-word;
+}
+
+.songItem > a > .songName{
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.songItem > a{
+    text-decoration: none;
+    color: white;
+}
+
+.songItem > a > img{
+    width: 10vw;
+    aspect-ratio: 1/1;
+    display: block;
+}
+
+.arrow{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}

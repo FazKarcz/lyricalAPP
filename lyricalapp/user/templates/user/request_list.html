@@ -1,20 +1,61 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
     <title>Lyrical App</title>
+    <link rel="stylesheet" href="{% static 'css/styleRequestList.css' %}">
+    <script src="https://kit.fontawesome.com/6340fe00a1.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <a href="{% url 'dashboard' %}">Powrót</a>
-    <a href="{% url 'make_request'%}">Stwórz zgłoszenie</a>
-    <h1>Tutaj jest twoja lista zgłoszeń</h1>
-    {% for request in requests %}
-        <div>
-            <p>Zgłoszenie: {{ request.song_name }} - {{ request.author }}</p>
-            <p>Data: {{ request.date }}</p>
-            <p>Status: {{ request.status }}</p>
-            <p>------------------------------------------------------------------</p>
+    <nav id='menu'>
+        <a href="{% url 'index' %}"><img src="{% static 'pics/lyricus_logo2.png' %}" alt="logo"></a>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href="{% url 'artist:artist_list' %}">Artyści</a></li>
+            <li><a href="{% url 'song:album_list' %}">Albumy</a></li>
+            <li><a href="{% url 'song:song_list' %}">Piosenki</a></li>
+            <li><a class='dropdown-arrow' href='#'><i class="fa fa-user" aria-hidden="true"></i></a>
+            <ul class='sub-menus'>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'request_list' %}">Zgłoszenia</a></li>
+                <li><a href="{% url 'favorite_list' %}">Ulubione</a></li>
+                <li><a href="{% url 'logout' %}?next={{ request.path }}">Wyloguj</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Logowanie</a></li>
+                <li><a href="{% url 'register' %}?next={{ request.path }}">Rejestracja</a></li>
+                {% endif %}
+            </ul>
+            <li><a href="{% url 'contactpage:contact' %}">Kontakt</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="container">
+            <div class="header">
+                <h1>Twoja lista zgłoszeń</h1>
+                <a class="create-request-btn" href="{% url 'make_request'%}">Stwórz zgłoszenie</a>
+            </div>
+            <div class="requests-list">
+                {% for request in requests %}
+                    <div class="request-details">
+                        <div class="request-info">
+                            <p>Zgłoszenie: <span>{{ request.song_name }} - {{ request.author }}</span></p>
+                            <p>Data: <span>{{ request.date }}</span></p>
+                            <p>Status: <span>{{ request.status }}</span></p>
+                        </div>
+                        <div class="request-status">
+                            {% if request.status == "Przyjęty" %}
+                                <i id="tak" class="fa fa-check-circle-o fa-5x" aria-hidden="true"></i>
+                            {% elif request.status == "Odrzucony" %}
+                                <i id="nie" class="fa fa-times-circle-o fa-5x" aria-hidden="true"></i>
+                            {% elif request.status == "Nie rozpatrzony" %}
+                                <i id="niewiem" class="fa fa-clock-o fa-5x" aria-hidden="true"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    {% endfor %}
+    </main>
 </body>
 </html>

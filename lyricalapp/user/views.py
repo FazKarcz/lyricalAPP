@@ -8,6 +8,10 @@ from request.models import Request
 from request.forms import RequestForm
 from .models import Favorite
 from song.models import Song
+from django.core.paginator import Paginator
+from django.contrib.auth import authenticate, login as auth_login
+from urllib.parse import urlparse
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 def register(request):
@@ -29,32 +33,32 @@ def register(request):
 
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('index')
 
     form = LoginForm()
 
-    # wyciągamy z formularza logowania login i hasło
     if request.method == "POST":
         form = LoginForm(request, data=request.POST)
-
         if form.is_valid():
             username = request.POST.get('username')
             password = request.POST.get('password')
-
-            user = authenticate(request, username=username, password=password) #czy użytkownik istnieje?
+            user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                auth.login(request, user)
-                return redirect('dashboard')
+                auth_login(request, user)
+                previous_url = request.POST.get('next') or '/'
+                if previous_url == request.build_absolute_uri():
+                    return redirect('index')
+                return redirect(previous_url)
 
-    context = {'loginform':form}
-
-    return render(request,'user/login.html', context=context)
+    context = {'loginform': form, 'next': request.GET.get('next', '/')}
+    return render(request, 'user/login.html', context=context)
 
 def logout(request):
-
     auth.logout(request)
-
-    return redirect("login")
+    next_url = request.GET.get('next', '/')
+    return redirect(next_url)
 
 @login_required(login_url='login')
 def dashboard(request):
@@ -82,4 +86,23 @@ def make_request(request):
 @login_required(login_url='login')
 def favorite_list(request):
     favorites = Favorite.objects.filter(user=request.user)
-    return render(request, 'user/favorite_list.html', {'favorites': favorites})
+    paginator = Paginator(favorites, 10)  # 10 ulubionych piosenek na stronę
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    order_by = request.GET.get('order_by')
+    search_query = request.GET.get('search_query')
+
+    if order_by == 'release_date':
+        favorites = favorites.order_by('release_date')
+    elif order_by == 'alphabetical':
+        favorites = favorites.order_by('song_name')
+
+    if search_query:
+        favorites = favorites.filter(Q(song_name__icontains=search_query))
+    context = {
+        'favorites': page_obj.object_list,
+        'page_obj': page_obj,
+        'order_by': order_by,
+        'search_query': search_query,
+    }
+    return render(request, 'user/favorite_list.html', context)
